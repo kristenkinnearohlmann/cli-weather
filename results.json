@@ -1,0 +1,355 @@
+// 20201007195635
+// https://api.opencagedata.com/geocode/v1/json?key=d9fd2e09691b4c60b9735145cb396a8a&q=Bloomington+1%2C+99423+Minnesota%2C+United%20States&pretty=1
+
+{
+    "documentation": "https://opencagedata.com/api",
+    "licenses": [
+      {
+        "name": "see attribution guide",
+        "url": "https://opencagedata.com/credits"
+      }
+    ],
+    "rate": {
+      "limit": 2500,
+      "remaining": 2474,
+      "reset": 1602201600
+    },
+    "results": [
+      {
+        "annotations": {
+          "DMS": {
+            "lat": "44° 49' 56.06580'' N",
+            "lng": "93° 19' 13.75392'' W"
+          },
+          "FIPS": {
+            "county": "27053",
+            "state": "27"
+          },
+          "MGRS": "15TVK7466764364",
+          "Maidenhead": "EN34it19nr",
+          "Mercator": {
+            "x": -10388389.116,
+            "y": 5565012.996
+          },
+          "OSM": {
+            "edit_url": "https://www.openstreetmap.org/edit?relation=136670#map=17/44.83224/-93.32049",
+            "note_url": "https://www.openstreetmap.org/note/new#map=17/44.83224/-93.32049&layers=N",
+            "url": "https://www.openstreetmap.org/?mlat=44.83224&mlon=-93.32049#map=17/44.83224/-93.32049"
+          },
+          "UN_M49": {
+            "regions": {
+              "AMERICAS": "019",
+              "NORTHERN_AMERICA": "021",
+              "US": "840",
+              "WORLD": "001"
+            },
+            "statistical_groupings": [
+              "MEDC"
+            ]
+          },
+          "callingcode": 1,
+          "currency": {
+            "alternate_symbols": [
+              "US$"
+            ],
+            "decimal_mark": ".",
+            "disambiguate_symbol": "US$",
+            "html_entity": "$",
+            "iso_code": "USD",
+            "iso_numeric": "840",
+            "name": "United States Dollar",
+            "smallest_denomination": 1,
+            "subunit": "Cent",
+            "subunit_to_unit": 100,
+            "symbol": "$",
+            "symbol_first": 1,
+            "thousands_separator": ","
+          },
+          "flag": "🇺🇸",
+          "geohash": "9zvxh3qnep379729pgx4",
+          "qibla": 43.82,
+          "roadinfo": {
+            "drive_on": "right",
+            "speed_in": "mph"
+          },
+          "sun": {
+            "rise": {
+              "apparent": 1602159720,
+              "astronomical": 1602153900,
+              "civil": 1602157980,
+              "nautical": 1602155940
+            },
+            "set": {
+              "apparent": 1602200280,
+              "astronomical": 1602119700,
+              "civil": 1602115680,
+              "nautical": 1602117660
+            }
+          },
+          "timezone": {
+            "name": "America/Chicago",
+            "now_in_dst": 1,
+            "offset_sec": -18000,
+            "offset_string": "-0500",
+            "short_name": "CDT"
+          },
+          "what3words": {
+            "words": "curve.lamp.rugs"
+          },
+          "wikidata": "Q490737"
+        },
+        "bounds": {
+          "northeast": {
+            "lat": 44.8631417,
+            "lng": -93.197413
+          },
+          "southwest": {
+            "lat": 44.7851309,
+            "lng": -93.3988956
+          }
+        },
+        "components": {
+          "ISO_3166-1_alpha-2": "US",
+          "ISO_3166-1_alpha-3": "USA",
+          "_category": "place",
+          "_type": "city",
+          "city": "Bloomington",
+          "continent": "North America",
+          "country": "United States of America",
+          "country_code": "us",
+          "county": "Hennepin County",
+          "state": "Minnesota",
+          "state_code": "MN"
+        },
+        "confidence": 6,
+        "formatted": "Bloomington, Minnesota, United States of America",
+        "geometry": {
+          "lat": 44.8322405,
+          "lng": -93.3204872
+        }
+      },
+      {
+        "annotations": {
+          "DMS": {
+            "lat": "43° 52' 4.40040'' N",
+            "lng": "93° 3' 13.57920'' W"
+          },
+          "FIPS": {
+            "state": "27"
+          },
+          "MGRS": "15TVJ9567957201",
+          "Maidenhead": "EN33lu38nh",
+          "Mercator": {
+            "x": -10358698.515,
+            "y": 5415399.243
+          },
+          "OSM": {
+            "note_url": "https://www.openstreetmap.org/note/new#map=17/43.86789/-93.05377&layers=N",
+            "url": "https://www.openstreetmap.org/?mlat=43.86789&mlon=-93.05377#map=17/43.86789/-93.05377"
+          },
+          "UN_M49": {
+            "regions": {
+              "AMERICAS": "019",
+              "NORTHERN_AMERICA": "021",
+              "US": "840",
+              "WORLD": "001"
+            },
+            "statistical_groupings": [
+              "MEDC"
+            ]
+          },
+          "callingcode": 1,
+          "currency": {
+            "alternate_symbols": [
+              "US$"
+            ],
+            "decimal_mark": ".",
+            "disambiguate_symbol": "US$",
+            "html_entity": "$",
+            "iso_code": "USD",
+            "iso_numeric": "840",
+            "name": "United States Dollar",
+            "smallest_denomination": 1,
+            "subunit": "Cent",
+            "subunit_to_unit": 100,
+            "symbol": "$",
+            "symbol_first": 1,
+            "thousands_separator": ","
+          },
+          "flag": "🇺🇸",
+          "geohash": "9zvcd9bkcznwcfdu8w89",
+          "qibla": 44.17,
+          "roadinfo": {
+            "drive_on": "right",
+            "road": "1st St NE",
+            "speed_in": "mph"
+          },
+          "sun": {
+            "rise": {
+              "apparent": 1602159600,
+              "astronomical": 1602153900,
+              "civil": 1602157860,
+              "nautical": 1602155880
+            },
+            "set": {
+              "apparent": 1602200280,
+              "astronomical": 1602119580,
+              "civil": 1602115620,
+              "nautical": 1602117600
+            }
+          },
+          "timezone": {
+            "name": "America/Chicago",
+            "now_in_dst": 1,
+            "offset_sec": -18000,
+            "offset_string": "-0500",
+            "short_name": "CDT"
+          },
+          "what3words": {
+            "words": "shoulders.average.roofs"
+          }
+        },
+        "components": {
+          "ISO_3166-1_alpha-2": "US",
+          "ISO_3166-1_alpha-3": "USA",
+          "_category": "road",
+          "_type": "road",
+          "continent": "North America",
+          "country": "United States of America",
+          "country_code": "us",
+          "road": "1st St NE",
+          "state": "Minnesota",
+          "state_code": "MN",
+          "town": "Blooming Prairie"
+        },
+        "confidence": 3,
+        "formatted": "1st St NE, Blooming Prairie, MN, United States of America",
+        "geometry": {
+          "lat": 43.867889,
+          "lng": -93.053772
+        }
+      },
+      {
+        "annotations": {
+          "DMS": {
+            "lat": "46° 15' 0.86400'' N",
+            "lng": "94° 15' 1.98000'' W"
+          },
+          "FIPS": {
+            "state": "27"
+          },
+          "MGRS": "15TVM0360422611",
+          "Maidenhead": "EN26ug90wb",
+          "Mercator": {
+            "x": -10491923.233,
+            "y": 5789662.067
+          },
+          "OSM": {
+            "note_url": "https://www.openstreetmap.org/note/new#map=17/46.25024/-94.25055&layers=N",
+            "url": "https://www.openstreetmap.org/?mlat=46.25024&mlon=-94.25055#map=17/46.25024/-94.25055"
+          },
+          "UN_M49": {
+            "regions": {
+              "AMERICAS": "019",
+              "NORTHERN_AMERICA": "021",
+              "US": "840",
+              "WORLD": "001"
+            },
+            "statistical_groupings": [
+              "MEDC"
+            ]
+          },
+          "callingcode": 1,
+          "currency": {
+            "alternate_symbols": [
+              "US$"
+            ],
+            "decimal_mark": ".",
+            "disambiguate_symbol": "US$",
+            "html_entity": "$",
+            "iso_code": "USD",
+            "iso_numeric": "840",
+            "name": "United States Dollar",
+            "smallest_denomination": 1,
+            "subunit": "Cent",
+            "subunit_to_unit": 100,
+            "symbol": "$",
+            "symbol_first": 1,
+            "thousands_separator": ","
+          },
+          "flag": "🇺🇸",
+          "geohash": "cbhzp78g5j8hn7nnx59j",
+          "qibla": 42.87,
+          "roadinfo": {
+            "drive_on": "right",
+            "speed_in": "mph"
+          },
+          "sun": {
+            "rise": {
+              "apparent": 1602160020,
+              "astronomical": 1602154020,
+              "civil": 1602158220,
+              "nautical": 1602156120
+            },
+            "set": {
+              "apparent": 1602200460,
+              "astronomical": 1602120000,
+              "civil": 1602115860,
+              "nautical": 1602117960
+            }
+          },
+          "timezone": {
+            "name": "America/Chicago",
+            "now_in_dst": 1,
+            "offset_sec": -18000,
+            "offset_string": "-0500",
+            "short_name": "CDT"
+          },
+          "what3words": {
+            "words": "marketable.tedious.handsets"
+          }
+        },
+        "bounds": {
+          "northeast": {
+            "lat": 49.384358,
+            "lng": -89.483385
+          },
+          "southwest": {
+            "lat": 43.499361,
+            "lng": -97.239196
+          }
+        },
+        "components": {
+          "ISO_3166-1_alpha-2": "US",
+          "ISO_3166-1_alpha-3": "USA",
+          "_category": "place",
+          "_type": "state",
+          "continent": "North America",
+          "country": "United States of America",
+          "country_code": "us",
+          "state": "Minnesota",
+          "state_code": "MN"
+        },
+        "confidence": 1,
+        "formatted": "Minnesota, United States of America",
+        "geometry": {
+          "lat": 46.25024,
+          "lng": -94.25055
+        }
+      }
+    ],
+    "status": {
+      "code": 200,
+      "message": "OK"
+    },
+    "stay_informed": {
+      "blog": "https://blog.opencagedata.com",
+      "twitter": "https://twitter.com/OpenCage"
+    },
+    "thanks": "For using an OpenCage API",
+    "timestamp": {
+      "created_http": "Thu, 08 Oct 2020 00:56:35 GMT",
+      "created_unix": 1602118595
+    },
+    "total_results": 3
+  }
