@@ -2,6 +2,13 @@ require 'httparty'
 
 class Geolocation
 
+    attr_accessor :address, :city, :state,
+    attr_reader :address_full
+
+    def initialize(address, city, state)
+        address_full = "#{address}, #{city} #{state}"
+    end
+
     # How can this be hidden from GitHub?
     API_KEY = "c945744d9d15f2e14ff811ff3900a645"
 
@@ -19,7 +26,7 @@ class Geolocation
     puts response_json["data"]
 
     # Move link portion to Forecast Scraper class
-    puts "https://forecast.weather.gov/MapClick.php?lat=#{geo_latitude}&lon=#{geo_longitude}&unit=0&lg=english&FcstType=digital"
+    puts "https://forecast.weather.gov/MapClick.php?lat=#{response_json["data"][0]["latitude"]}&lon=#{response_json["data"][0]["longitude"]}&unit=0&lg=english&FcstType=digital"
 
     # Add method to create this hash from the response - iterate if more than 1 set of return values or always use first?
     geo_data = {
