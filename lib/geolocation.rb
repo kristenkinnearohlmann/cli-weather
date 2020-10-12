@@ -10,34 +10,35 @@ class Geolocation
 
     def initialize(address, city, state)
         address_full = "#{address}, #{city} #{state}"
+        puts address_full
     end
 
 
 
-    # Add initialize to get address
-    # Add method to create proper string for API
-    address = "5032 Nine Mile Creek Parkway, Bloomington MN"
+    # # Add initialize to get address
+    # # Add method to create proper string for API
+    # address = "5032 Nine Mile Creek Parkway, Bloomington MN"
 
-    # Add method to get back API response, parse to JSON and return
-    url = "http://api.positionstack.com/v1/forward?access_key=#{API_KEY}&query=#{address}"
+    # # Add method to get back API response, parse to JSON and return
+    # url = "http://api.positionstack.com/v1/forward?access_key=#{API_KEY}&query=#{address}"
 
-    response = HTTParty.get(url)
+    # response = HTTParty.get(url)
 
-    response_json = JSON.parse(response.body)
+    # response_json = JSON.parse(response.body)
     
-    puts response_json["data"]
+    # puts response_json["data"]
 
-    # Move link portion to Forecast Scraper class
-    puts "https://forecast.weather.gov/MapClick.php?lat=#{response_json["data"][0]["latitude"]}&lon=#{response_json["data"][0]["longitude"]}&unit=0&lg=english&FcstType=digital"
+    # # Move link portion to Forecast Scraper class
+    # puts "https://forecast.weather.gov/MapClick.php?lat=#{response_json["data"][0]["latitude"]}&lon=#{response_json["data"][0]["longitude"]}&unit=0&lg=english&FcstType=digital"
 
-    # Add method to create this hash from the response - iterate if more than 1 set of return values or always use first?
-    geo_data = {
-        :latitude => response_json["data"][0]["latitude"],
-        :longitude => response_json["data"][0]["longitude"],
-        :city => response_json["data"][0]["locality"],
-        :state => response_json["data"][0]["region_code"]
-    }
+    # # Add method to create this hash from the response - iterate if more than 1 set of return values or always use first?
+    # geo_data = {
+    #     :latitude => response_json["data"][0]["latitude"],
+    #     :longitude => response_json["data"][0]["longitude"],
+    #     :city => response_json["data"][0]["locality"],
+    #     :state => response_json["data"][0]["region_code"]
+    # }
 
-    puts geo_data
+    # puts geo_data
 
 end

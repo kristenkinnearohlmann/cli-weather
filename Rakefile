@@ -10,3 +10,5 @@ desc "A console"
 task :console do
     Pry.start
 end
+
+# Run by invoking Rake --tasks
