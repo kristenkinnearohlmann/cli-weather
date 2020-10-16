@@ -1,5 +1,3 @@
-# require 'httparty'
-
 class Geolocation
 
     attr_accessor :address, :city, :state
