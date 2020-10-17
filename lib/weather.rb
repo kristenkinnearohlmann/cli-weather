@@ -1,7 +1,7 @@
 class Weather
 
-    def intialize()
+    def self.start()
         puts "Welcome to CLI Weather!"
     end
-    
+
 end
