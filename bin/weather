@@ -2,5 +2,4 @@
 
 require_relative '../config/environment'
 
-puts "Let's get the weather!"
 Weather.start
