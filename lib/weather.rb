@@ -5,7 +5,7 @@ class Weather
     end
 
     def self.start()
-        puts "Welcome to CLI Weather!"
+        puts "Let's get the weather!"
         weather = self.new
     end
 
