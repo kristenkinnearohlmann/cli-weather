@@ -1,7 +1,8 @@
 describe Weather do
     context 'Initialize application' do
         it 'Greets the user' do
-            Weather.start.should eq("Let's get the weather!")
+            # #puts always includes a newline character that needs to be tested for
+            expect { Weather.new }.to output("Let's get the weather!\n").to_stdout
         end
     end
 end
