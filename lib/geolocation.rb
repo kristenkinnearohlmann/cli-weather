@@ -7,8 +7,18 @@ class Geolocation
     API_KEY = "c945744d9d15f2e14ff811ff3900a645"
 
     def initialize(address_type, address)
-        puts address_type
-        puts address
+        @address_type = address_type
+        @address = address
+
+        puts "Finding weather for #{@address}"
+
+        if @address_type == 1 then # zipcode only
+            puts "by zipcode"
+        elsif @address_type == 2 then # city & state
+            puts "by city and state"
+        elsif @address_type ==3 then # full address
+            puts "by full address"
+        end
     end
 
 

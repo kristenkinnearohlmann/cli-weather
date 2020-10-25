@@ -20,13 +20,13 @@ class Weather
             puts "Choose location type to enter - 1. Zip code only 2. City, State 3. Full Address"
             @address_type = gets.chomp.to_i
 
-            if @address_type == 1 then
+            if @address_type == 1 then # zipcode only
                 puts "Enter zipcode: "
                 @address = gets.chomp
-            elsif @address_type == 2 then
+            elsif @address_type == 2 then # city & state
                 puts "Enter city, state: "
                 @address = gets.chomp
-            elsif @address_type == 3 then
+            elsif @address_type == 3 then # full address
                 puts "Enter full address (street, city, state, zipcode): "
             end
 
