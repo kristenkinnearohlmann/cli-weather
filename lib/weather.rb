@@ -14,10 +14,10 @@ class Weather
     end
 
     def get_address
-        @response = "N"
+        @response = "N".downcase
 
-        while @response == "N"
-            puts "Choose location type to enter - 1. Zip code only, 2. City, State, 3. Full Address"
+        while @response == "n"
+            puts "Choose location type to enter - 1. Zip code only 2. City, State 3. Full Address"
             @address_type = gets.chomp.to_i
 
             if @address_type == 1 then
@@ -31,9 +31,9 @@ class Weather
             end
 
             puts "You entered #{@address}, is this correct? Enter Y or N"
-            @response = gets.chomp
+            @response = gets.chomp.downcase
 
-            if @response == 'Y' then
+            if @response == 'y' then
                 puts "Let's get some weather!"
             end
         end
