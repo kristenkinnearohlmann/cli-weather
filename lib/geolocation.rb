@@ -1,14 +1,14 @@
 class Geolocation
 
-    attr_accessor :address, :city, :state
-    attr_reader :address_full
+    attr_accessor :address, :city, :state, :zipcode
+    attr_reader :address_full, :lat_lon
 
     # How can this be hidden from GitHub?
     API_KEY = "c945744d9d15f2e14ff811ff3900a645"
 
-    def initialize(address, city, state)
-        address_full = "#{address}, #{city} #{state}"
-        puts address_full
+    def initialize(address_type, address)
+        puts address_type
+        puts address
     end
 
 
