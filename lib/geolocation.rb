@@ -10,14 +10,14 @@ class Geolocation
         @address_type = address_type
         @address = address
 
-        puts "Finding weather for #{@address}"
+        msg = "Finding weather for #{@address}"
 
         if @address_type == 1 then # zipcode only
-            puts "by zipcode"
+            puts "#{msg} by zipcode"
         elsif @address_type == 2 then # city & state
-            puts "by city and state"
+            puts "#{msg} by city and state"
         elsif @address_type ==3 then # full address
-            puts "by full address"
+            puts "#{msg} by full address"
         end
     end
 
