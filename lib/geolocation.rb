@@ -10,15 +10,19 @@ class Geolocation
         @address_type = address_type
         @address = address
 
-        msg = "Finding weather for #{@address}"
+        msg = "Finding weather for"
 
         if @address_type == 1 then # zipcode only
-            puts "#{msg} by zipcode"
+            puts "#{msg} #{address} by zipcode"
         elsif @address_type == 2 then # city & state
-            puts "#{msg} by city and state"
+            @address.sub!(",","")            
+            puts "#{msg} #{address} by city and state"
         elsif @address_type ==3 then # full address
-            puts "#{msg} by full address"
+            puts "#{msg} #{address} by full address"
         end
+
+        url = "http://api.positionstack.com/v1/forward?access_key=#{API_KEY}&query=#{@address}"
+        puts url
     end
 
 
