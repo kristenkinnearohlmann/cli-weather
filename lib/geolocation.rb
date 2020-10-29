@@ -1,7 +1,7 @@
 class Geolocation
 
     attr_accessor :address, :city, :state, :zipcode
-    attr_reader :address_full, :lat_lon
+    attr_reader :address_full, :lat_lon, :geo_data
 
     # How can this be hidden from GitHub?
     API_KEY = "c945744d9d15f2e14ff811ff3900a645"
@@ -18,32 +18,28 @@ class Geolocation
             @address.sub!(",","")            
             puts "#{msg} #{address} by city and state"
         elsif @address_type ==3 then # full address
+            # format: "5032 Nine Mile Creek Parkway, Bloomington MN"
             puts "#{msg} #{address} by full address"
         end
 
-        url = "http://api.positionstack.com/v1/forward?access_key=#{API_KEY}&query=#{@address}"
-        puts url
+        get_location_information
     end
 
+    def get_location_information
+        url = "http://api.positionstack.com/v1/forward?access_key=#{API_KEY}&query=#{@address}"
+        puts url
+        geo_data_raw = get_api_data(url)
+        puts(geo_data_raw)
+    end
 
+    def get_api_data(url)
+        response = HTTParty.get(url)
+        response_json = JSON.parse(response.body)
+        response_json["data"]
+    end
 
-    # # Add initialize to get address
-    # # Add method to create proper string for API
-    # address = "5032 Nine Mile Creek Parkway, Bloomington MN"
-
-    # # Add method to get back API response, parse to JSON and return
-    # url = "http://api.positionstack.com/v1/forward?access_key=#{API_KEY}&query=#{address}"
-
-    # response = HTTParty.get(url)
-
-    # response_json = JSON.parse(response.body)
-    
-    # puts response_json["data"]
-
-    # # Move link portion to Forecast Scraper class
-    # puts "https://forecast.weather.gov/MapClick.php?lat=#{response_json["data"][0]["latitude"]}&lon=#{response_json["data"][0]["longitude"]}&unit=0&lg=english&FcstType=digital"
-
-    # # Add method to create this hash from the response - iterate if more than 1 set of return values or always use first?
+    def process_geo_data
+            # # Add method to create this hash from the response - iterate if more than 1 set of return values or always use first?
     # geo_data = {
     #     :latitude => response_json["data"][0]["latitude"],
     #     :longitude => response_json["data"][0]["longitude"],
@@ -52,5 +48,8 @@ class Geolocation
     # }
 
     # puts geo_data
+    end
+
+
 
 end
