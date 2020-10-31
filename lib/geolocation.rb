@@ -29,7 +29,7 @@ class Geolocation
         url = "http://api.positionstack.com/v1/forward?access_key=#{API_KEY}&query=#{@address}"
         puts url
         geo_data_raw = get_api_data(url)
-        puts(geo_data_raw)
+        process_geo_data(geo_data_raw)
     end
 
     def get_api_data(url)
@@ -38,7 +38,11 @@ class Geolocation
         response_json["data"]
     end
 
-    def process_geo_data
+    def process_geo_data(geo_data_raw)
+        puts geo_data_raw[0].instance_of? Hash
+        geo_data_raw.each do |key,value|
+            puts "#{key} is #{value}"
+        end
             # # Add method to create this hash from the response - iterate if more than 1 set of return values or always use first?
     # geo_data = {
     #     :latitude => response_json["data"][0]["latitude"],
