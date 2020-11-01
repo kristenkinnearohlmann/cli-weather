@@ -39,6 +39,7 @@ class Geolocation
     end
 
     def process_geo_data(geo_data_raw)
+        puts geo_data_raw.length
         puts geo_data_raw[0].instance_of? Hash
         geo_data_raw.each do |key,value|
             puts "#{key} is #{value}"
