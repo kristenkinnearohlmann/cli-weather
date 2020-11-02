@@ -40,10 +40,14 @@ class Geolocation
 
     def process_geo_data(geo_data_raw)
         puts geo_data_raw.length
-        puts geo_data_raw[0].instance_of? Hash
-        geo_data_raw.each do |key,value|
-            puts "#{key} is #{value}"
+        geo_data_raw.each do |item|
+            puts item.instance_of? Hash
         end
+
+        
+        # geo_data_raw.each do |key,value|
+        #     puts "#{key} is #{value}"
+        # end
             # # Add method to create this hash from the response - iterate if more than 1 set of return values or always use first?
     # geo_data = {
     #     :latitude => response_json["data"][0]["latitude"],
