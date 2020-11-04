@@ -42,6 +42,10 @@ class Geolocation
         puts geo_data_raw.length
         geo_data_raw.each do |item|
             puts item.instance_of? Hash
+            item.each do |key,value|
+                puts "#{key}: #{value}"
+            end
+            puts "\n"
         end
 
         

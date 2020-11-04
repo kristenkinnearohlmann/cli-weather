@@ -6,16 +6,16 @@ class Weather
     def initialize
         puts "Let's get the weather!"
         @quit = false
-        get_weather
+        weather_main
     end
 
-    def get_weather
+    def weather_main
         get_address
         while !@quit           
-            @lat_lon = Geolocation.new(address_type,address)
+            @lat_lon = Geolocation.new(address_type,address) if !quit?
             @quit = true
         end
-        puts "End of #get_weather"
+        puts "End of #weather_main"
     end
 
     def get_address
@@ -47,6 +47,10 @@ class Weather
                 puts "Let's get some weather!"
             end
         end
+    end
+
+    def quit?
+        return @quit
     end
 
 end
