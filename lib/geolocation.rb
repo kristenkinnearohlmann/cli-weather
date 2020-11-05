@@ -27,7 +27,6 @@ class Geolocation
 
     def get_location_information
         url = "http://api.positionstack.com/v1/forward?access_key=#{API_KEY}&query=#{@address}"
-        puts url
         geo_data_raw = get_api_data(url)
         process_geo_data(geo_data_raw)
     end
@@ -39,15 +38,20 @@ class Geolocation
     end
 
     def process_geo_data(geo_data_raw)
-        puts geo_data_raw.length
-        geo_data_raw.each do |item|
-            puts item.instance_of? Hash
-            item.each do |key,value|
-                puts "#{key}: #{value}"
+        if geo_data_raw.length == 0 then
+            puts "No results found"
+        elsif geo_data_raw.length == 1 then
+            puts "Found one result - processing your weather now..."
+        elsif geo_data_raw.length > 1 then
+            puts "Found #{geo_data_raw.length} results."
+            geo_data_raw.each do |item|
+                # puts item.instance_of? Hash
+                item.each do |key,value|
+                    puts "#{key}: #{value}"
+                end
+                puts "\n"
             end
-            puts "\n"
         end
-
         
         # geo_data_raw.each do |key,value|
         #     puts "#{key} is #{value}"
