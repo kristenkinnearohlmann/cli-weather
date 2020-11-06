@@ -43,14 +43,17 @@ class Geolocation
         elsif geo_data_raw.length == 1 then
             puts "Found one result - processing your weather now..."
         elsif geo_data_raw.length > 1 then
-            puts "Found #{geo_data_raw.length} results."
-            geo_data_raw.each do |item|
-                # puts item.instance_of? Hash
-                item.each do |key,value|
-                    puts "#{key}: #{value}"
-                end
-                puts "\n"
+            puts "Found #{geo_data_raw.length} results. Please choose which location to use: "
+            geo_data_raw.each_index do |index|
+                puts "\t[#{index+1}] #{geo_data_raw[index]["label"]}"
             end
+            # geo_data_raw.each do |item|
+            #     # puts item.instance_of? Hash
+            #     item.each do |key,value|
+            #         puts "#{key}: #{value}"
+            #     end
+            #     puts "\n"
+            # end
         end
         
         # geo_data_raw.each do |key,value|
