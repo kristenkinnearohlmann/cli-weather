@@ -10,6 +10,10 @@ class Geolocation
         @address_type = address_type
         @address = address
 
+        select_geolocation
+    end
+
+    def select_geolocation
         msg = "Finding weather for"
 
         if @address_type == 1 then # zipcode only
@@ -28,7 +32,7 @@ class Geolocation
     def get_location_information
         url = "http://api.positionstack.com/v1/forward?access_key=#{API_KEY}&query=#{@address}"
         @geo_data_raw = get_api_data(url)
-        process_geo_data
+        select_location
     end
 
     def get_api_data(url)
@@ -37,7 +41,7 @@ class Geolocation
         response_json["data"]
     end
 
-    def process_geo_data
+    def select_location
         if @geo_data_raw.length == 0 then
             puts "No results found"
         elsif @geo_data_raw.length == 1 then
