@@ -1,7 +1,7 @@
 class Geolocation
 
     attr_accessor :address, :city, :state, :zipcode
-    attr_reader :address_full, :lat_lon, :geo_data
+    attr_reader :address_full, :lat_lon, :geo_data_raw, :geo_data
 
     # How can this be hidden from GitHub?
     API_KEY = "c945744d9d15f2e14ff811ff3900a645"
@@ -27,8 +27,8 @@ class Geolocation
 
     def get_location_information
         url = "http://api.positionstack.com/v1/forward?access_key=#{API_KEY}&query=#{@address}"
-        geo_data_raw = get_api_data(url)
-        process_geo_data(geo_data_raw)
+        @geo_data_raw = get_api_data(url)
+        process_geo_data
     end
 
     def get_api_data(url)
@@ -37,16 +37,17 @@ class Geolocation
         response_json["data"]
     end
 
-    def process_geo_data(geo_data_raw)
-        if geo_data_raw.length == 0 then
+    def process_geo_data
+        if @geo_data_raw.length == 0 then
             puts "No results found"
-        elsif geo_data_raw.length == 1 then
+        elsif @geo_data_raw.length == 1 then
             puts "Found one result - processing your weather now..."
-        elsif geo_data_raw.length > 1 then
-            puts "Found #{geo_data_raw.length} results. Please choose which location to use: "
-            geo_data_raw.each_index do |index|
-                puts "\t[#{index+1}] #{geo_data_raw[index]["label"]}"
-            end
+        elsif @geo_data_raw.length > 1 then
+            puts "Found #{@geo_data_raw.length} results. Please choose which location to use: "
+            puts "Processing weather for #{@geo_data_raw[choose_location]["label"]}"
+            # geo_data_raw.each_index do |index|
+            #     puts "\t[#{index+1}] #{geo_data_raw[index]["label"]}"
+            # end
             # geo_data_raw.each do |item|
             #     # puts item.instance_of? Hash
             #     item.each do |key,value|
@@ -70,6 +71,12 @@ class Geolocation
     # puts geo_data
     end
 
-
+    def choose_location
+        @geo_data_raw.each_index do |index|
+            puts "\t[#{index+1}] #{@geo_data_raw[index]["label"]}"
+        end
+        print "Location choice: "
+        choice_nbr = (gets.chomp.to_i) - 1
+    end
 
 end
