@@ -1,7 +1,7 @@
 class Geolocation
 
     attr_accessor :address, :city, :state, :zipcode
-    attr_reader :address_full, :lat_lon, :geo_data_raw, :geo_data
+    attr_reader :address_full, :lat_lon, :geo_data_raw, :loc_index, :geo_data
 
     # How can this be hidden from GitHub?
     API_KEY = "c945744d9d15f2e14ff811ff3900a645"
@@ -32,7 +32,7 @@ class Geolocation
     def get_location_information
         url = "http://api.positionstack.com/v1/forward?access_key=#{API_KEY}&query=#{@address}"
         @geo_data_raw = get_api_data(url)
-        select_location
+        @loc_index = select_location
     end
 
     def get_api_data(url)
@@ -42,13 +42,22 @@ class Geolocation
     end
 
     def select_location
+        # geo_data_raw is an array of 0 or more hash elements
+        index_nbr = -1
+
         if @geo_data_raw.length == 0 then
             puts "No results found"
         elsif @geo_data_raw.length == 1 then
             puts "Found one result - processing your weather now..."
+            index_nbr = 0
         elsif @geo_data_raw.length > 1 then
             puts "Found #{@geo_data_raw.length} results. Please choose which location to use: "
-            puts "Processing weather for #{@geo_data_raw[choose_location]["label"]}"
+            index_nbr = choose_location
+            puts "Processing weather for #{@geo_data_raw[index_nbr]["label"]}"
+            index_nbr
+        end
+
+        def get_geo_data
             # geo_data_raw.each_index do |index|
             #     puts "\t[#{index+1}] #{geo_data_raw[index]["label"]}"
             # end
@@ -58,12 +67,7 @@ class Geolocation
             #         puts "#{key}: #{value}"
             #     end
             #     puts "\n"
-            # end
-        end
-        
-        # geo_data_raw.each do |key,value|
-        #     puts "#{key} is #{value}"
-        # end
+            # end            
             # # Add method to create this hash from the response - iterate if more than 1 set of return values or always use first?
     # geo_data = {
     #     :latitude => response_json["data"][0]["latitude"],
@@ -71,8 +75,8 @@ class Geolocation
     #     :city => response_json["data"][0]["locality"],
     #     :state => response_json["data"][0]["region_code"]
     # }
+        end
 
-    # puts geo_data
     end
 
     def choose_location
