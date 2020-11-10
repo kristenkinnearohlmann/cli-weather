@@ -33,6 +33,12 @@ class Geolocation
         url = "http://api.positionstack.com/v1/forward?access_key=#{API_KEY}&query=#{@address}"
         @geo_data_raw = get_api_data(url)
         @loc_index = select_location
+
+        if @loc_index == -1 then # no results found
+
+        elsif
+            puts @loc_index
+        end
     end
 
     def get_api_data(url)
@@ -54,29 +60,8 @@ class Geolocation
             puts "Found #{@geo_data_raw.length} results. Please choose which location to use: "
             index_nbr = choose_location
             puts "Processing weather for #{@geo_data_raw[index_nbr]["label"]}"
-            index_nbr
         end
-
-        def get_geo_data
-            # geo_data_raw.each_index do |index|
-            #     puts "\t[#{index+1}] #{geo_data_raw[index]["label"]}"
-            # end
-            # geo_data_raw.each do |item|
-            #     # puts item.instance_of? Hash
-            #     item.each do |key,value|
-            #         puts "#{key}: #{value}"
-            #     end
-            #     puts "\n"
-            # end            
-            # # Add method to create this hash from the response - iterate if more than 1 set of return values or always use first?
-    # geo_data = {
-    #     :latitude => response_json["data"][0]["latitude"],
-    #     :longitude => response_json["data"][0]["longitude"],
-    #     :city => response_json["data"][0]["locality"],
-    #     :state => response_json["data"][0]["region_code"]
-    # }
-        end
-
+        index_nbr        
     end
 
     def choose_location
@@ -85,6 +70,26 @@ class Geolocation
         end
         print "Location choice: "
         choice_nbr = (gets.chomp.to_i) - 1
+    end
+
+    def get_geo_data
+        # geo_data_raw.each_index do |index|
+        #     puts "\t[#{index+1}] #{geo_data_raw[index]["label"]}"
+        # end
+        # geo_data_raw.each do |item|
+        #     # puts item.instance_of? Hash
+        #     item.each do |key,value|
+        #         puts "#{key}: #{value}"
+        #     end
+        #     puts "\n"
+        # end            
+        # # Add method to create this hash from the response - iterate if more than 1 set of return values or always use first?
+# geo_data = {
+#     :latitude => response_json["data"][0]["latitude"],
+#     :longitude => response_json["data"][0]["longitude"],
+#     :city => response_json["data"][0]["locality"],
+#     :state => response_json["data"][0]["region_code"]
+# }
     end
 
 end
