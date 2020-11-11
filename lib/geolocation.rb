@@ -35,7 +35,7 @@ class Geolocation
         @loc_index = select_location
 
         if @loc_index == -1 then # no results found
-
+            puts "Invalid entry"
         elsif
             puts @loc_index
         end
@@ -59,7 +59,7 @@ class Geolocation
         elsif @geo_data_raw.length > 1 then
             puts "Found #{@geo_data_raw.length} results. Please choose which location to use: "
             index_nbr = choose_location
-            puts "Processing weather for #{@geo_data_raw[index_nbr]["label"]}"
+            puts "Processing weather for #{@geo_data_raw[index_nbr]["label"]}" if index_nbr >= 0
         end
         index_nbr        
     end
@@ -68,6 +68,7 @@ class Geolocation
         @geo_data_raw.each_index do |index|
             puts "\t[#{index+1}] #{@geo_data_raw[index]["label"]}"
         end
+        puts "\t[0] None of these choices"
         print "Location choice: "
         choice_nbr = (gets.chomp.to_i) - 1
     end

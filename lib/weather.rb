@@ -1,6 +1,6 @@
 class Weather
 
-    attr_accessor :address, :address_type, :lat_lon
+    attr_accessor :address, :address_type, :geo_location
     attr_reader :quit
 
     def initialize
@@ -12,8 +12,8 @@ class Weather
     def weather_main
         get_address
         while !@quit           
-            @lat_lon = Geolocation.new(address_type,address) if !quit?
-            puts @lat_lon
+            @geo_location = Geolocation.new(address_type,address) if !quit?
+            puts @geo_location.loc_index
             @quit = true
         end
         puts "End of #weather_main"
