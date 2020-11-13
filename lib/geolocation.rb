@@ -36,8 +36,9 @@ class Geolocation
 
         if @loc_index == -1 then # no results found
             puts "Invalid entry"
-        elsif
+        else
             puts @loc_index
+            get_geo_data
         end
     end
 
@@ -61,7 +62,7 @@ class Geolocation
             index_nbr = choose_location
             puts "Processing weather for #{@geo_data_raw[index_nbr]["label"]}" if index_nbr >= 0
         end
-        index_nbr        
+        index_nbr  
     end
 
     def choose_location
@@ -74,6 +75,8 @@ class Geolocation
     end
 
     def get_geo_data
+        puts "In #get_geo_data"
+        puts @geo_data_raw[@loc_index]
         # geo_data_raw.each_index do |index|
         #     puts "\t[#{index+1}] #{geo_data_raw[index]["label"]}"
         # end
