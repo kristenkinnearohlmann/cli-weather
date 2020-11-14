@@ -9,6 +9,7 @@ class Geolocation
     def initialize(address_type, address)
         @address_type = address_type
         @address = address
+        @geo_data = {}
 
         select_geolocation
     end
@@ -44,8 +45,8 @@ class Geolocation
 
     def get_api_data(url)
         response = HTTParty.get(url)
-        response_json = JSON.parse(response.body)
-        response_json["data"]
+        @geo_data_raw = JSON.parse(response.body)
+        @geo_data_raw["data"]
     end
 
     def select_location
@@ -75,25 +76,28 @@ class Geolocation
     end
 
     def get_geo_data
-        puts "In #get_geo_data"
-        puts @geo_data_raw[@loc_index]
-        # geo_data_raw.each_index do |index|
-        #     puts "\t[#{index+1}] #{geo_data_raw[index]["label"]}"
-        # end
-        # geo_data_raw.each do |item|
-        #     # puts item.instance_of? Hash
-        #     item.each do |key,value|
-        #         puts "#{key}: #{value}"
-        #     end
-        #     puts "\n"
-        # end            
+
+        geo_hash = @geo_data_raw[@loc_index]
+
+        geo_hash.each do |key,value|
+            # puts key
+            # key_sym = key.to_sym
+            # puts key_sym.class
+            # b[key_sym] = 1
+            @geo_data[key.to_sym] = value
+            # puts "#{key}: #{value}" 
+        end
+
+        puts @geo_data
+
         # # Add method to create this hash from the response - iterate if more than 1 set of return values or always use first?
-# geo_data = {
-#     :latitude => response_json["data"][0]["latitude"],
-#     :longitude => response_json["data"][0]["longitude"],
-#     :city => response_json["data"][0]["locality"],
-#     :state => response_json["data"][0]["region_code"]
-# }
+        # @geo_data = {
+        #     :latitude => @geo_data_raw["data"][0]["latitude"],
+        #     :longitude => @geo_data_raw["data"][0]["longitude"],
+        #     :label => @geo_data_raw
+        #     :city => @geo_data_raw["data"][0]["locality"],
+        #     :state => @geo_data_raw["data"][0]["region_code"]
+        # }
     end
 
 end
