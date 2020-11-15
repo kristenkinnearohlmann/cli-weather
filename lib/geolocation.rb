@@ -82,7 +82,6 @@ class Geolocation
             @geo_data[key.to_sym] = value
         end
 
-        puts @geo_data
     end
 
 end

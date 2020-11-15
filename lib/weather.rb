@@ -13,6 +13,7 @@ class Weather
         get_address
         while !@quit           
             @geo_location = Geolocation.new(address_type,address) if !quit?
+            Scraper.nws(@geo_location)
             @quit = true
         end
         puts "End of #weather_main"
