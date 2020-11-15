@@ -13,7 +13,6 @@ class Weather
         get_address
         while !@quit           
             @geo_location = Geolocation.new(address_type,address) if !quit?
-            puts @geo_location.loc_index
             @quit = true
         end
         puts "End of #weather_main"

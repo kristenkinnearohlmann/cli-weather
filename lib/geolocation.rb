@@ -38,7 +38,6 @@ class Geolocation
         if @loc_index == -1 then # no results found
             puts "Invalid entry"
         else
-            puts @loc_index
             get_geo_data
         end
     end
@@ -80,24 +79,10 @@ class Geolocation
         geo_hash = @geo_data_raw[@loc_index]
 
         geo_hash.each do |key,value|
-            # puts key
-            # key_sym = key.to_sym
-            # puts key_sym.class
-            # b[key_sym] = 1
             @geo_data[key.to_sym] = value
-            # puts "#{key}: #{value}" 
         end
 
         puts @geo_data
-
-        # # Add method to create this hash from the response - iterate if more than 1 set of return values or always use first?
-        # @geo_data = {
-        #     :latitude => @geo_data_raw["data"][0]["latitude"],
-        #     :longitude => @geo_data_raw["data"][0]["longitude"],
-        #     :label => @geo_data_raw
-        #     :city => @geo_data_raw["data"][0]["locality"],
-        #     :state => @geo_data_raw["data"][0]["region_code"]
-        # }
     end
 
 end
