@@ -16,7 +16,12 @@ class Scraper
     def self.get_data
         puts @url
         @url_data = Nokogiri::HTML(open(@url))
-        puts @url_data
+        binding.pry
+        # puts @url_data
+        # title: @url_data.search("title").text
+        # doc body: @url_data.search("body")
+        # update date: url_body.search("table")[3].children.search("td")[1].text
+        # weather body (needs work): url_body.search("table")[7]
     end
 
 end
