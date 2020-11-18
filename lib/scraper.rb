@@ -8,7 +8,8 @@ class Scraper
         lat_val = geo_location.geo_data[:latitude]
         lon_val = geo_location.geo_data[:longitude]
 
-        @url = "https://forecast.weather.gov/MapClick.php?lat=#{lat_val}&lon=#{lon_val}&unit=0&lg=english&FcstType=digital"
+        # @url = "https://forecast.weather.gov/MapClick.php?lat=#{lat_val}&lon=#{lon_val}&unit=0&lg=english&FcstType=digital" # data table did not really have enough to parse easily, return to this in the future
+        @url = "https://forecast.weather.gov/MapClick.php?lat=#{lat_val}&lon=#{lon_val}"
 
         self.get_data
     end
@@ -17,11 +18,8 @@ class Scraper
         puts @url
         @url_data = Nokogiri::HTML(open(@url))
         binding.pry
-        # puts @url_data
-        # title: @url_data.search("title").text
-        # doc body: @url_data.search("body")
-        # update date: url_body.search("table")[3].children.search("td")[1].text
-        # weather body (needs work): url_body.search("table")[7]
+        # NWS label: @url_data.css("#header-nws").children[0].attributes["alt"].value
+        # Current conditions (in progress): @url_data.css("#current-conditions")
     end
 
 end
