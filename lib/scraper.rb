@@ -19,7 +19,13 @@ class Scraper
         @url_data = Nokogiri::HTML(open(@url))
         binding.pry
         # NWS label: @url_data.css("#header-nws").children[0].attributes["alt"].value
-        # Current conditions (in progress): @url_data.css("#current-conditions")
+        # Current conditions (in progress): 
+        #   Title: @url_data.css("#current-conditions").css(".panel-title").text.strip
+        #   Summary: 
+        #           conditions = @url_data.css("#current_conditions-summary").css("p")
+        #           conditions.each {|item| puts item.text}
+        # 7 Day Forecast (in progress): 
+        #   Title: @url_data.css("#seven-day-forecast").css(".panel-title").text.strip
     end
 
 end
