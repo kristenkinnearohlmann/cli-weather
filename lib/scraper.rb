@@ -17,6 +17,8 @@ class Scraper
     def self.get_data
         puts @url
         @url_data = Nokogiri::HTML(open(@url))
+        # @url_data.encoding = "UTF-8"
+
         binding.pry
         # NWS label: @url_data.css("#header-nws").children[0].attributes["alt"].value
         # Current conditions (in progress): 
@@ -26,12 +28,12 @@ class Scraper
         #           conditions.each {|item| puts item.text}
         #   Details: (in progress - how can I resolve special chars????)
         #       condition_details = @url_data.css("#current-conditions").css("#current_conditions_detail").css("td").children
+        #       condition_arr = []
         #       condition_details.each do |item|
         #           val = item.text
         #           puts val
         #           condition_arr << val
         #       end
-        end
         # 7 Day Forecast (in progress): 
         #   Title: @url_data.css("#seven-day-forecast").css(".panel-title").text.strip
     end
