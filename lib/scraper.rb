@@ -24,6 +24,14 @@ class Scraper
         #   Summary: 
         #           conditions = @url_data.css("#current_conditions-summary").css("p")
         #           conditions.each {|item| puts item.text}
+        #   Details: (in progress - how can I resolve special chars????)
+        #       condition_details = @url_data.css("#current-conditions").css("#current_conditions_detail").css("td").children
+        #       condition_details.each do |item|
+        #           val = item.text
+        #           puts val
+        #           condition_arr << val
+        #       end
+        end
         # 7 Day Forecast (in progress): 
         #   Title: @url_data.css("#seven-day-forecast").css(".panel-title").text.strip
     end
