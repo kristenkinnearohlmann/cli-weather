@@ -16,8 +16,8 @@ class Scraper
 
     def self.get_data
         puts @url
-        @url_data = Nokogiri::HTML(open(@url))
-        # @url_data.encoding = "UTF-8"
+        @url_data = Nokogiri::HTML(open(@url).read,nil,'utf-8')
+        # @url_data.encoding = 'utf-8'
 
         binding.pry
         # NWS label: @url_data.css("#header-nws").children[0].attributes["alt"].value
@@ -34,6 +34,7 @@ class Scraper
         #           puts val
         #           condition_arr << val
         #       end
+        #       this works but how to iterate?? puts "#{condition_details[6].text}: #{condition_details[7].text}"
         # 7 Day Forecast (in progress): 
         #   Title: @url_data.css("#seven-day-forecast").css(".panel-title").text.strip
     end
