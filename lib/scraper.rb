@@ -30,10 +30,9 @@ class Scraper
         #       condition_details = @url_data.css("#current-conditions").css("#current_conditions_detail").css("td").children
         #       condition_arr = []
         #       condition_details.each do |item|
-        #           val = item.text
-        #           puts val
         #           condition_arr << val
         #       end
+        #       need to use puts to display the value correctly
         #       this works but how to iterate?? puts "#{condition_details[6].text}: #{condition_details[7].text}"
         # 7 Day Forecast (in progress): 
         #   Title: @url_data.css("#seven-day-forecast").css(".panel-title").text.strip
