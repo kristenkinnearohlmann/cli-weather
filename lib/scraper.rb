@@ -38,9 +38,14 @@ class Scraper
         #           print "#{val}: " if index % 2 == 0
         #           puts "#{val}" if index % 2 == 1
         #       end
-        end
-        # 7 Day Forecast (in progress): 
-        #   Title: @url_data.css("#seven-day-forecast").css(".panel-title").text.strip
+        # Detailed Forecast (in progress): 
+        #   Title: @url_data.css("#detailed-forecast").css(".panel-title").text.strip
+        #   Detail:
+        #       @url_data.css("#detailed-forecast-body").css(".row").each do |item|
+        #           print "#{item.css(".forecast-label").text.strip}: "
+        #           puts item.css(".forecast-text").text.strip
+        #       end
+        # 
     end
 
 end
