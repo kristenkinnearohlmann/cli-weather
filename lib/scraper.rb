@@ -51,7 +51,7 @@ class Scraper
         #           puts stone.css(".short-desc").text
         #           puts stone.css(".temp").text
         #           # stone.css("img").each {|item| puts item.css("title")}
-        #           puts stone.css("img")["title"]
+        #           puts stone.css("img")[0]["title"]
         #       end
         # 
     end
