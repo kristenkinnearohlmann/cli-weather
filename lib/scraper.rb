@@ -47,8 +47,14 @@ class Scraper
         #       end
         #  Another details from tombstones:
         #       @url_data.css("#seven-day-forecast-list").css(".forecast-tombstone").each do |stone|
-        #           # puts stone.css(".period-name").text
-        #           # expand => @url_data.css("#seven-day-forecast-list").css(".forecast-tombstone").css(".period-name")[?].children => join strings, replacing empty string with space when there is more than 1 text value
+        #           @url_data.css("#seven-day-forecast-list").css(".forecast-tombstone").css(".period-name").each do |name|
+        #           period_name = ""
+        #               name.children.each do |item|
+        #                   piece = item.text.strip
+        #                   period_name += "#{piece} " if piece.length > 0
+        #               end
+        #               puts period_name.strip
+        #           end
         #           puts stone.css(".short-desc").text
         #           puts stone.css(".temp").text
         #           # stone.css("img").each {|item| puts item.css("title")}
