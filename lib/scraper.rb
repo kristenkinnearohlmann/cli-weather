@@ -2,9 +2,10 @@ class Scraper
     # Nokogiri
     # Open URL
 
-    attr_reader :url, :url_data
+    attr_reader :url, :url_data, :weather_summary
 
     def self.nws(geo_location)
+        @weather_summary = {}
         lat_val = geo_location.geo_data[:latitude]
         lon_val = geo_location.geo_data[:longitude]
 
@@ -19,10 +20,15 @@ class Scraper
         @url_data = Nokogiri::HTML(open(@url).read,nil,'utf-8')
         # @url_data.encoding = 'utf-8'
 
-        binding.pry
-        # NWS label: @url_data.css("#header-nws").children[0].attributes["alt"].value
+        # binding.pry
+        # @weather_summary[:source] = @url_data.css("#header-nws").children[0].attributes["alt"].value # source of forecast
+        @weather_summary = {
+            :source => @url_data.css("#header-nws").children[0].attributes["alt"].value, # source of forecast
+            :url => @url,
+            :wx_rpt_location => @url_data.css("#current-conditions").css(".panel-title").text.strip # weather location station
+        }
         # Current conditions (in progress): 
-        #   Title: @url_data.css("#current-conditions").css(".panel-title").text.strip
+        #   
         #   Summary: 
         #           conditions = @url_data.css("#current_conditions-summary").css("p")
         #           conditions.each {|item| puts item.text}
@@ -61,6 +67,7 @@ class Scraper
         #           puts stone.css("img")[0]["title"]
         #       end
         # 
+        puts @weather_summary
     end
 
 end
