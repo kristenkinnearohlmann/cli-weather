@@ -27,12 +27,18 @@ class Scraper
             :url => @url,
             :wx_rpt_location => @url_data.css("#current-conditions").css(".panel-title").text.strip # weather location station
         }
+        binding.pry
         # Current conditions (in progress): 
         #   
+        #   Lat, Lon, Elev:
+        #       @url_data.css("#current-conditions").css(".smallTxt").children.each_with_index do |child,index|
+        #           print "#{child.text}" if index.even?
+        #           print "#{child.text}\t" if index.odd?
+        #       end
         #   Summary: 
         #           conditions = @url_data.css("#current_conditions-summary").css("p")
         #           conditions.each {|item| puts item.text}
-        #   Details: (in progress - how can I resolve special chars????)
+        #   Details: 
         #       condition_details = @url_data.css("#current-conditions").css("#current_conditions_detail").css("td").children
         #       condition_arr = []
         #       condition_details.each do |item|
