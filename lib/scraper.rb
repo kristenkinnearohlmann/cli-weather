@@ -25,7 +25,7 @@ class Scraper
         @weather_summary = {
             :source => @url_data.css("#header-nws").children[0].attributes["alt"].value, # source of forecast
             :url => @url,
-            :wx_rpt_location => @url_data.css("#current-conditions").css(".panel-title").text.strip # weather location station
+            :wx_rpt_location => {:loc_title => @url_data.css("#current-conditions").css(".panel-title").text.strip} # weather location station
         }
         binding.pry
         # Current conditions (in progress): 
