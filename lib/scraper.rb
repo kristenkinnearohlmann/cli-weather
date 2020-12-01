@@ -12,25 +12,24 @@ class Scraper
         # @url = "https://forecast.weather.gov/MapClick.php?lat=#{lat_val}&lon=#{lon_val}&unit=0&lg=english&FcstType=digital" # data table did not really have enough to parse easily, return to this in the future
         @url = "https://forecast.weather.gov/MapClick.php?lat=#{lat_val}&lon=#{lon_val}"
 
-        self.get_data
+        self.get_data_nws
     end
 
-    def self.get_data
+    def self.get_data_nws
         puts @url
         @url_data = Nokogiri::HTML(open(@url).read,nil,'utf-8')
-        # @url_data.encoding = 'utf-8'
 
-        # binding.pry
-        # @weather_summary[:source] = @url_data.css("#header-nws").children[0].attributes["alt"].value # source of forecast
+        # URL, source of forecast, weather station location
         @weather_summary = {
-            :source => @url_data.css("#header-nws").children[0].attributes["alt"].value, # source of forecast
-            :url => @url,
+            :url => @url,            
+            :source => @url_data.css("#header-nws").children[0].attributes["alt"].value, 
             :wx_rpt_location => {:loc_title => @url_data.css("#current-conditions").css(".panel-title").text.strip} # weather location station
         }
+        #   Lat, Lon, Elev:
+
+
         binding.pry
         # Current conditions (in progress): 
-        #   
-        #   Lat, Lon, Elev:
         #       @url_data.css("#current-conditions").css(".smallTxt").children.each_with_index do |child,index|
         #           print "#{child.text}" if index.even?
         #           print "#{child.text}\t" if index.odd?
