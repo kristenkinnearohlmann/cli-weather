@@ -26,10 +26,15 @@ class Scraper
             :wx_rpt_location => {:loc_title => @url_data.css("#current-conditions").css(".panel-title").text.strip} # weather location station
         }
         #   Lat, Lon, Elev:
-
+        ph = {}
+        # puts @url_data.css("#current-conditions").css(".smallTxt").children[0].text.strip.sub!("\u00A0","")
+        label = @url_data.css("#current-conditions").css(".smallTxt").children[0].text.strip.sub!("\u00A0","").sub!(":","")
+        ph[label.to_sym] = 1
+        puts ph
 
         binding.pry
         # Current conditions (in progress): 
+        #       can get length with @url_data.css("#current-conditions").css(".smallTxt").children => how to prepare outside loop?
         #       @url_data.css("#current-conditions").css(".smallTxt").children.each_with_index do |child,index|
         #           print "#{child.text}" if index.even?
         #           print "#{child.text}\t" if index.odd?
