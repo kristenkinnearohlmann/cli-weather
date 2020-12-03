@@ -16,7 +16,6 @@ class Scraper
     end
 
     def self.get_data_nws
-        puts @url
         @url_data = Nokogiri::HTML(open(@url).read,nil,'utf-8')
 
         # URL, source of forecast, weather station location
@@ -26,19 +25,14 @@ class Scraper
             :wx_rpt_location => {:loc_title => @url_data.css("#current-conditions").css(".panel-title").text.strip} # weather location station
         }
         #   Lat, Lon, Elev:
-        ph = {}
-        # puts @url_data.css("#current-conditions").css(".smallTxt").children[0].text.strip.sub!("\u00A0","")
-        label = @url_data.css("#current-conditions").css(".smallTxt").children[0].text.strip.sub!("\u00A0","").sub!(":","")
-        ph[label.to_sym] = 1
-        puts ph
+        label = ""
+        @url_data.css("#current-conditions").css(".smallTxt").children.each_with_index do |child,index|
+            label = child.text.strip.sub!("\u00A0","").sub!(":","").downcase if index.even?
+            @weather_summary[:wx_rpt_location][label.to_sym] = child.text.strip if index.odd?
+        end
+        puts @weather_summary
 
         binding.pry
-        # Current conditions (in progress): 
-        #       can get length with @url_data.css("#current-conditions").css(".smallTxt").children => how to prepare outside loop?
-        #       @url_data.css("#current-conditions").css(".smallTxt").children.each_with_index do |child,index|
-        #           print "#{child.text}" if index.even?
-        #           print "#{child.text}\t" if index.odd?
-        #       end
         #   Summary: 
         #           conditions = @url_data.css("#current_conditions-summary").css("p")
         #           conditions.each {|item| puts item.text}
