@@ -24,30 +24,32 @@ class Scraper
             :source => @url_data.css("#header-nws").children[0].attributes["alt"].value, 
             :wx_rpt_location => {:loc_title => @url_data.css("#current-conditions").css(".panel-title").text.strip} # weather location station
         }
-        #   Lat, Lon, Elev:
+        #   Lat, Lon, Elev
         label = ""
         @url_data.css("#current-conditions").css(".smallTxt").children.each_with_index do |child,index|
             label = child.text.strip.sub!("\u00A0","").sub!(":","").downcase if index.even?
             @weather_summary[:wx_rpt_location][label.to_sym] = child.text.strip if index.odd?
         end
+        label = ""
+
+        # Current conditions - summary
+        @weather_summary[:current_conditions] = {}
+        @url_data.css("#current_conditions-summary").css("p").each_with_index do |item,index|
+            @weather_summary[:current_conditions][:summary] = item.text.strip if index == 0
+            @weather_summary[:current_conditions][:temp_f] = item.text.strip if index == 1
+            @weather_summary[:current_conditions][:temp_c] = item.text.strip if index == 2
+        end
+
+        # Current conditions - details
+        @url_data.css("#current-conditions").css("#current_conditions_detail").css("td").children.each_with_index do |child,index|
+            label = child.text.strip if index.even?
+            @weather_summary[:current_conditions][label.to_sym] = child.text.strip if index.odd?
+        end
+
         puts @weather_summary
 
         binding.pry
-        #   Summary: 
-        #           conditions = @url_data.css("#current_conditions-summary").css("p")
-        #           conditions.each {|item| puts item.text}
-        #   Details: 
-        #       condition_details = @url_data.css("#current-conditions").css("#current_conditions_detail").css("td").children
-        #       condition_arr = []
-        #       condition_details.each do |item|
-        #           condition_arr << item.text.strip
-        #       end
-        #       need to use puts to display the value correctly
-        #       this works but how to iterate?? puts "#{condition_details[6].text}: #{condition_details[7].text}"
-        #       condition_arr.each_with_index do |val,index|
-        #           print "#{val}: " if index % 2 == 0
-        #           puts "#{val}" if index % 2 == 1
-        #       end
+
         # Detailed Forecast (in progress): 
         #   Title: @url_data.css("#detailed-forecast").css(".panel-title").text.strip
         #   Detail:
