@@ -35,19 +35,20 @@ class Scraper
         @weather_summary[:current_conditions] = {}
         @url_data.css("#current_conditions-summary").css("p").each_with_index do |item,index|
             @weather_summary[:current_conditions][:summary] = item.text.strip if index == 0
-            @weather_summary[:current_conditions][:temp_f] = item.text.strip if index == 1
-            @weather_summary[:current_conditions][:temp_c] = item.text.strip if index == 2
+            @weather_summary[:current_conditions][:temp_farenheit] = item.text.strip if index == 1
+            @weather_summary[:current_conditions][:temp_celsius] = item.text.strip if index == 2
         end
 
         # Current conditions - details
         @url_data.css("#current-conditions").css("#current_conditions_detail").css("td").children.each_with_index do |child,index|
-            label = child.text.strip if index.even?
+            label = child.text.strip.downcase.gsub(" ","_") if index.even?
             @weather_summary[:current_conditions][label.to_sym] = child.text.strip if index.odd?
         end
 
+        binding.pry
         #  Detailed Forecast
-        label = @url_data.css("#detailed-forecast").css(".panel-title").text.strip
-        @weather_summary[label.to_sym] = {}
+        @weather_summary[@url_data.css("#detailed-forecast").css(".panel-title").text.strip.downcase.gsub(" ","_").to_sym] = {}
+        binding.pry
         @url_data.css("#detailed-forecast-body").css(".row").each do |item|
             @weather_summary[label.to_sym][item.css(".forecast-label").text.strip.downcase.to_sym] = item.css(".forecast-text").text.strip
         end
