@@ -45,12 +45,11 @@ class Scraper
             @weather_summary[:current_conditions][label.to_sym] = child.text.strip if index.odd?
         end
 
-        binding.pry
         #  Detailed Forecast
-        @weather_summary[@url_data.css("#detailed-forecast").css(".panel-title").text.strip.downcase.gsub(" ","_").to_sym] = {}
-        binding.pry
+        label = @url_data.css("#detailed-forecast").css(".panel-title").text.strip.downcase.gsub(" ","_")
+        @weather_summary[label.to_sym] = {}
         @url_data.css("#detailed-forecast-body").css(".row").each do |item|
-            @weather_summary[label.to_sym][item.css(".forecast-label").text.strip.downcase.to_sym] = item.css(".forecast-text").text.strip
+            @weather_summary[label.to_sym][item.css(".forecast-label").text.strip.downcase.gsub(" ","_").to_sym] = item.css(".forecast-text").text.strip
         end
 
         puts @weather_summary
