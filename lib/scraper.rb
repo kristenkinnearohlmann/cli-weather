@@ -56,13 +56,6 @@ class Scraper
 
         binding.pry
 
-        # Detailed Forecast (in progress): 
-        #   label: @url_data.css("#detailed-forecast").css(".panel-title").text.strip
-        #   Detail:
-        #       @url_data.css("#detailed-forecast-body").css(".row").each do |item|
-        #           print "#{item.css(".forecast-label").text.strip}: "
-        #           puts item.css(".forecast-text").text.strip
-        #       end
         #  Another details from tombstones:
         #       @url_data.css("#seven-day-forecast-list").css(".forecast-tombstone").each do |stone|
         #           @url_data.css("#seven-day-forecast-list").css(".forecast-tombstone").css(".period-name").each do |name|
