@@ -53,26 +53,6 @@ class Scraper
         end
 
         puts @weather_summary
-
-        binding.pry
-
-        #  Another details from tombstones:
-        #       @url_data.css("#seven-day-forecast-list").css(".forecast-tombstone").each do |stone|
-        #           @url_data.css("#seven-day-forecast-list").css(".forecast-tombstone").css(".period-name").each do |name|
-        #           period_name = ""
-        #               name.children.each do |item|
-        #                   piece = item.text.strip
-        #                   period_name += "#{piece} " if piece.length > 0
-        #               end
-        #               puts period_name.strip
-        #           end
-        #           puts stone.css(".short-desc").text
-        #           puts stone.css(".temp").text
-        #           # stone.css("img").each {|item| puts item.css("title")}
-        #           puts stone.css("img")[0]["title"]
-        #       end
-        # 
-        puts @weather_summary
     end
 
 end
