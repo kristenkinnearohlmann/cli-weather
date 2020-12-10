@@ -13,6 +13,7 @@ class Scraper
         @url = "https://forecast.weather.gov/MapClick.php?lat=#{lat_val}&lon=#{lon_val}"
 
         self.get_data_nws
+        @weather_summary
     end
 
     def self.get_data_nws
@@ -52,7 +53,6 @@ class Scraper
             @weather_summary[label.to_sym][item.css(".forecast-label").text.strip.downcase.gsub(" ","_").to_sym] = item.css(".forecast-text").text.strip
         end
 
-        puts @weather_summary
     end
 
 end

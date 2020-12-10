@@ -1,6 +1,6 @@
 class Weather
 
-    attr_accessor :address, :address_type, :geo_location
+    attr_accessor :address, :address_type, :geo_location, :weather_summary
     attr_reader :quit
 
     def initialize
@@ -13,7 +13,8 @@ class Weather
         get_address
         while !@quit           
             @geo_location = Geolocation.new(address_type,address) if !quit?
-            Scraper.nws(@geo_location)
+            @weather_summary = Scraper.nws(@geo_location)
+            print_weather if @weather_summary
             @quit = true
         end
         puts "End of #weather_main"
@@ -52,6 +53,10 @@ class Weather
 
     def quit?
         return @quit
+    end
+
+    def print_weather
+        puts @weather_summary
     end
 
 end
