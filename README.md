@@ -3,6 +3,8 @@
 ## Restart
 As of December 11, 2020, NWS stopped serving the key URL I was targeting with latitude and longitude query string parameters. I found a reference to an API for NWS that I will start investigating: https://www.weather.gov/documentation/services-web-api
 
+Then on December 12 it started working again! Argh!
+
 ## Project Dependencies
 
 httparty (gem): [https://github.com/jnunemaker/httparty](https://github.com/jnunemaker/httparty)  
