@@ -67,8 +67,8 @@ class Weather
             end
         end
 
-        puts "\nDetailed Forecast: #{@weather_summary[:detailed_forecast]}"
-        binding.pry
+        puts "\nDetailed Forecast:"
+        @weather_summary[:detailed_forecast].each {|item, val| puts "#{item.to_s.gsub("_"," ").capitalize()}: #{val}"}
     end
 
 end
