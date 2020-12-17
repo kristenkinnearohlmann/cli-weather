@@ -10,14 +10,16 @@ class Weather
     end
 
     def weather_main
-        get_address
-        while !@quit           
+        while !@quit
+            get_address
             @geo_location = Geolocation.new(address_type,address) if !quit?
             @weather_summary = Scraper.nws(@geo_location)
             print_weather if @weather_summary
-            @quit = true
+            print "\nGet another forecast? Enter Y or N: "
+            response = gets.chomp.downcase
+            @quit = true if response == 'n'
         end
-        puts "End of #weather_main"
+        puts "Enjoy your weather!"
     end
 
     def get_address
@@ -63,7 +65,7 @@ class Weather
         puts "#{@weather_summary[:current_conditions][:summary]} (#{@weather_summary[:current_conditions][:temp_farenheit]}|#{@weather_summary[:current_conditions][:temp_celsius]})"
         @weather_summary[:current_conditions].each do |item,val|
             if ((item != :summary) && (item != :temp_farenheit) && (item != :temp_celsius))
-                puts "#{item.capitalize()}: #{val}"
+                puts "#{item.to_s.gsub("_"," ").capitalize()}: #{val}"
             end
         end
 
