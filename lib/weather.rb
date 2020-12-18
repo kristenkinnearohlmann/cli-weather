@@ -12,12 +12,14 @@ class Weather
     def weather_main
         while !@quit
             get_address
-            @geo_location = Geolocation.new(address_type,address) if !quit?
-            @weather_summary = Scraper.nws(@geo_location)
-            print_weather if @weather_summary
-            print "\nGet another forecast? Enter Y or N: "
-            response = gets.chomp.downcase
-            @quit = true if response == 'n'
+            if !quit?
+                @geo_location = Geolocation.new(address_type,address) if !quit?
+                @weather_summary = Scraper.nws(@geo_location)
+                print_weather if @weather_summary
+                print "\nGet another forecast? Enter Y or N: "
+                response = gets.chomp.downcase
+                @quit = true if response == 'n'
+            end
         end
         puts "Enjoy your weather!"
     end
@@ -42,6 +44,10 @@ class Weather
             elsif @address_type == 3 then # full address
                 print "\nEnter full address (street, city, state, zipcode): "
                 @address = gets.chomp
+            else
+                puts "Not a valid option, please make a selection from the menu."
+                response = 'n'
+                next
             end
 
             print "You entered #{@address}, is this correct? Enter Y or N: "
