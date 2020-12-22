@@ -19,7 +19,7 @@ class Scraper
     def self.get_data_nws
 
         @url_data = Nokogiri::HTML(open(@url).read,nil,'utf-8')
-
+        
         if !@url_data.css("#current-conditions").empty?
 
             # URL, source of forecast, weather station location
@@ -34,7 +34,7 @@ class Scraper
                 label = child.text.strip.sub!("\u00A0","").sub!(":","").downcase if index.even?
                 @weather_summary[:wx_rpt_location][label.to_sym] = child.text.strip if index.odd?
             end
-
+            
             # Current conditions - summary
             @weather_summary[:current_conditions] = {}
             @url_data.css("#current_conditions-summary").css("p").each_with_index do |item,index|
@@ -42,13 +42,13 @@ class Scraper
                 @weather_summary[:current_conditions][:temp_farenheit] = item.text.strip if index == 1
                 @weather_summary[:current_conditions][:temp_celsius] = item.text.strip if index == 2
             end
-
+            
             # Current conditions - details
             @url_data.css("#current-conditions").css("#current_conditions_detail").css("td").children.each_with_index do |child,index|
                 label = child.text.strip.downcase.gsub(" ","_") if index.even?
                 @weather_summary[:current_conditions][label.to_sym] = child.text.strip if index.odd?
             end
-
+            
             #  Detailed Forecast
             label = @url_data.css("#detailed-forecast").css(".panel-title").text.strip.downcase.gsub(" ","_")
             @weather_summary[label.to_sym] = {}
