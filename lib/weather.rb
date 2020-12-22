@@ -34,9 +34,11 @@ class Weather
             if @address_type == 1 then # zipcode only
                 print "\nEnter zipcode: "
                 @address = gets.chomp
-                 puts "This is not a valid zipcode. Please enter a valid zip code." if /\A\d{5}\z/.match(@address) == nil
-                 response = 'n'
-                 next
+                if /\A\d{5}\z/.match(@address) == nil
+                    puts "This is not a valid zipcode. Please enter a valid zip code." 
+                    response = 'n'
+                    next
+                end
             elsif @address_type == 2 then # city & state
                 print "\nEnter city, state: "
                 @address = gets.chomp
