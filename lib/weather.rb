@@ -80,6 +80,9 @@ class Weather
             end
         end
 
+        puts"\nPress Enter for Detailed Forecast: "
+        enter_key = gets.chomp
+
         puts "\nDetailed Forecast:"
         @weather_summary[:detailed_forecast].each {|item, val| puts "#{item.to_s.gsub("_"," ").capitalize()}: #{val}"}
     end
