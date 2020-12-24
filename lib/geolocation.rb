@@ -69,9 +69,13 @@ class Geolocation
         @geo_data_raw.each_index do |index|
             puts "\t[#{index+1}] #{@geo_data_raw[index]["label"]}"
         end
-        puts "\t[0] None of these choices"
+        puts "\t[#{@geo_data_raw.count+1}] None of these choices"
+
         print "Location choice: "
         choice_nbr = (gets.chomp.to_i) - 1
+
+        choice_nbr = -1 if choice_nbr == @geo_data_raw.count # set to 0 if None selection is made
+        choice_nbr
     end
 
     def get_geo_data
