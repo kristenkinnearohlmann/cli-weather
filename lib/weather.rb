@@ -14,6 +14,7 @@ class Weather
             get_address
             if !quit?
                 @geo_location = Geolocation.new(address_type,address) if !quit?
+                binding.pry
                 @weather_summary = Scraper.nws(@geo_location)
                 print_weather if @weather_summary
                 print "\nGet another forecast? Enter Y or N: "

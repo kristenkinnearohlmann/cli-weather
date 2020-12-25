@@ -28,6 +28,8 @@ class Geolocation
         end
 
         get_location_information
+        puts @get_geo_data
+        binding.pry
     end
 
     def get_location_information
@@ -37,6 +39,8 @@ class Geolocation
 
         if @loc_index == -1 then # no results found
             puts "Invalid entry"
+        elsif @loc_index == -2 then # choose no location
+            puts "You selected none of these choices"
         else
             get_geo_data
         end
@@ -52,6 +56,7 @@ class Geolocation
         # geo_data_raw is an array of 0 or more hash elements
         index_nbr = -1
 
+        binding.pry
         if @geo_data_raw.length == 0 then
             puts "No results found"
         elsif @geo_data_raw.length == 1 then
@@ -60,7 +65,12 @@ class Geolocation
         elsif @geo_data_raw.length > 1 then
             puts "Found #{@geo_data_raw.length} results. Please choose which location to use: "
             index_nbr = choose_location
-            puts "Processing weather for #{@geo_data_raw[index_nbr]["label"]}" if index_nbr >= 0
+            if (index_nbr > @geo_data_raw.count) then
+                index_nbr = -2
+            else
+                puts "Processing weather for #{@geo_data_raw[index_nbr]["label"]}"
+            end
+            
         end
         index_nbr  
     end
