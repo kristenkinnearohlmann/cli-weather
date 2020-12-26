@@ -12,6 +12,7 @@ class Geolocation
         @geo_data = {}
 
         select_geolocation
+
     end
 
     def select_geolocation
@@ -28,8 +29,6 @@ class Geolocation
         end
 
         get_location_information
-        puts @get_geo_data
-        binding.pry
     end
 
     def get_location_information
@@ -37,11 +36,7 @@ class Geolocation
         @geo_data_raw = get_api_data(url)
         @loc_index = select_location
 
-        if @loc_index == -1 then # no results found
-            puts "Invalid entry"
-        elsif @loc_index == -2 then # choose no location
-            puts "You selected none of these choices"
-        else
+        if (@loc_index >= 0) then
             get_geo_data
         end
     end
@@ -56,17 +51,16 @@ class Geolocation
         # geo_data_raw is an array of 0 or more hash elements
         index_nbr = -1
 
-        binding.pry
         if @geo_data_raw.length == 0 then
-            puts "No results found"
+            puts "No results found" # index_nbr is already set to -1
         elsif @geo_data_raw.length == 1 then
             puts "Found one result - processing your weather now..."
-            index_nbr = 0
+            index_nbr = 0 # single result, array element 0
         elsif @geo_data_raw.length > 1 then
             puts "Found #{@geo_data_raw.length} results. Please choose which location to use: "
             index_nbr = choose_location
-            if (index_nbr > @geo_data_raw.count) then
-                index_nbr = -2
+            if index_nbr == -2 then # select the option for None
+                puts "You selected none of these choices"
             else
                 puts "Processing weather for #{@geo_data_raw[index_nbr]["label"]}"
             end
@@ -84,7 +78,7 @@ class Geolocation
         print "Location choice: "
         choice_nbr = (gets.chomp.to_i) - 1
 
-        choice_nbr = -1 if choice_nbr == @geo_data_raw.count # set to 0 if None selection is made
+        choice_nbr = -2 if choice_nbr == @geo_data_raw.count # set to -2 if None selection is made
         choice_nbr
     end
 
