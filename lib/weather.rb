@@ -10,18 +10,28 @@ class Weather
     end
 
     def weather_main
-        while !@quit
-            get_address
-            if !quit?
-                @geo_location = Geolocation.new(address_type,address) if !quit?
-                binding.pry
-                # add code to handle empty @goe_location.geo_data
-                @weather_summary = Scraper.nws(@geo_location)
-                print_weather if @weather_summary
-                print "\nGet another forecast? Enter Y or N: "
-                response = gets.chomp.downcase
-                @quit = true if response == 'n'
-            end
+        while !quit?
+            # quit? false at start of loop
+            # get_address can result in quit? true
+            # no data in @geo_location.geo_data.empty? should be quit? true
+            # DETAIL more scenarios to determine proper conditional
+
+
+            # get_address
+        #     if !quit?
+        #         if quit?
+        #             puts "Have a nice day!"
+        #         if (@geo_location.geo_data.empty? && !quit?) then
+        #             @geo_location = Geolocation.new(address_type,address)
+        #         end
+        #         @weather_summary = Scraper.nws(@geo_location)
+        #         print_weather if @weather_summary
+        #         print "\nGet another forecast? Enter Y or N: "
+        #         response = gets.chomp.downcase
+        #         @quit = true if response == 'n'
+        #     end
+        # end
+            @quit = true
         end
         puts "Enjoy your weather!"
     end
