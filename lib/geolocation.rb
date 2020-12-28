@@ -12,7 +12,6 @@ class Geolocation
         @geo_data = {}
 
         select_geolocation
-
     end
 
     def select_geolocation

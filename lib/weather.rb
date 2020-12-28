@@ -1,8 +1,9 @@
 class Weather
 
-    attr_accessor :address, :address_type, :geo_location, :weather_summary
+    attr_accessor :address, :address_type, :geo_location, :weather_summary; :retry
     attr_reader :quit
 
+    ## refactor - call from another file to a Start method then perform self.new?
     def initialize
         puts "\nLet's get the weather!"
         @quit = false
@@ -17,7 +18,8 @@ class Weather
             # DETAIL more scenarios to determine proper conditional
 
 
-            # get_address
+            get_address
+            Geolocation.new(address_type,address)
         #     if !quit?
         #         if quit?
         #             puts "Have a nice day!"
