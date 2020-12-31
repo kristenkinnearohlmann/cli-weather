@@ -15,8 +15,9 @@ class Weather
             # quit? false at start of loop
             # get_address can result in quit? true
             # get_address can result in No Choice
-            # no data in @geo_location.geo_data.empty? should be quit? true
-            # returned No Choice from @geo_location - retry
+            # geolocation can return @geo_location.geo_data.empty? should be quit? true
+            # geolocation can return No Choice - how to retry
+            
             # DETAIL more scenarios to determine proper conditional
 
 
