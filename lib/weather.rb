@@ -5,10 +5,15 @@ class Weather
 
     ## refactor - call from another file to a Start method then perform self.new?
     def initialize
-        puts "\nLet's get the weather!"
         @quit = false
-        weather_main
     end
+
+    def self.start
+        weather = self.new
+        puts "\nLet's get the weather!"
+        weather_main        
+    end
+    
 
     def weather_main
         while !quit?

@@ -2,4 +2,5 @@
 
 require_relative '../config/environment'
 
-Weather.new
+puts "Ruby CLI Weather"
+Weather.start
