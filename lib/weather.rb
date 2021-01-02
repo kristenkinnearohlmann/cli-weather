@@ -11,7 +11,7 @@ class Weather
     def self.start
         weather = self.new
         puts "\nLet's get the weather!"
-        weather_main        
+        weather.weather_main        
     end
     
 
