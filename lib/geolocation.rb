@@ -10,7 +10,7 @@ class Geolocation
         @address_type = address_type
         @address = address
         @geo_data = {}
-
+        binding.pry
         select_geolocation
     end
 
