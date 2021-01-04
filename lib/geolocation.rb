@@ -1,14 +1,16 @@
 class Geolocation
 
-    attr_accessor :address, :city, :state, :zipcode
+    attr_accessor :address, :city, :state, :zipcode, :weather
     attr_reader :address_full, :lat_lon, :geo_data_raw, :loc_index, :geo_data
 
     # How can this be hidden from GitHub?
     API_KEY = "c945744d9d15f2e14ff811ff3900a645"
 
-    def initialize(address_type, address)
-        @address_type = address_type
-        @address = address
+    def initialize(weather)
+        @weather = weather;
+        binding.pry
+        @address_type = @weather.address_type
+        @address = @weather.address
         @geo_data = {}
         binding.pry
         select_geolocation
