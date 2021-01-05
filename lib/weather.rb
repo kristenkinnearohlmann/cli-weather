@@ -28,7 +28,8 @@ class Weather
 
             get_address
 
-            Geolocation.new(self)
+            geo = Geolocation.new()
+            binding.pry
         #     if !quit?
         #         if quit?
         #             puts "Have a nice day!"

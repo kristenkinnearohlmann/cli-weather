@@ -1,39 +1,36 @@
 class Geolocation
 
-    attr_accessor :address, :city, :state, :zipcode, :weather
+    attr_accessor :city, :state, :zipcode, :weather
     attr_reader :address_full, :lat_lon, :geo_data_raw, :loc_index, :geo_data
 
     # How can this be hidden from GitHub?
     API_KEY = "c945744d9d15f2e14ff811ff3900a645"
 
-    def initialize(weather)
-        @weather = weather;
-        binding.pry
-        @address_type = @weather.address_type
-        @address = @weather.address
+    def initialize()
         @geo_data = {}
-        binding.pry
-        select_geolocation
     end
 
-    def select_geolocation
+    def select_geolocation(weather)
+        address_type = weather.address_type
+        address = weather.address
+        binding.pry
         msg = "Finding weather for"
 
-        if @address_type == 1 then # zipcode only
+        if address_type == 1 then # zipcode only
             puts "#{msg} #{address} by zipcode"
-        elsif @address_type == 2 then # city & state
-            @address.sub!(",","")            
+        elsif address_type == 2 then # city & state
+            address.sub!(",","")            
             puts "#{msg} #{address} by city and state"
-        elsif @address_type ==3 then # full address
+        elsif address_type ==3 then # full address
             # format: "5032 Nine Mile Creek Parkway, Bloomington MN"
             puts "#{msg} #{address} by full address"
         end
 
-        get_location_information
+        get_location_information(address)
     end
 
-    def get_location_information
-        url = "http://api.positionstack.com/v1/forward?access_key=#{API_KEY}&query=#{@address}"
+    def get_location_information(address)
+        url = "http://api.positionstack.com/v1/forward?access_key=#{API_KEY}&query=#{address}"
         @geo_data_raw = get_api_data(url)
         @loc_index = select_location
 
