@@ -11,12 +11,13 @@ class Weather
     def self.start
         @weather = self.new
         puts "\nLet's get the weather!"
-
+        binding.pry
         @weather.weather_main        
     end
     
 
     def weather_main
+        binding.pry
         while !quit?
             # quit? false at start of loop
             # get_address can result in quit? true
@@ -27,7 +28,7 @@ class Weather
             # DETAIL more scenarios to determine proper conditional
 
             get_address
-
+            binding.pry
             geo = Geolocation.new()
             binding.pry
         #     if !quit?
