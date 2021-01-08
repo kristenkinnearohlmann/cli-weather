@@ -10,7 +10,6 @@ class Weather
 
     def self.start
         @weather = self.new
-        puts "\nLet's get the weather!"
         binding.pry
         @weather.weather_main        
     end
