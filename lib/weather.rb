@@ -8,12 +8,9 @@ class Weather
         @quit = false
     end
 
-    def self.start
-        @weather = self.new
-        binding.pry
-        @weather.weather_main        
+    def set_retry
+        self.retry = true
     end
-    
 
     def weather_main
         binding.pry
