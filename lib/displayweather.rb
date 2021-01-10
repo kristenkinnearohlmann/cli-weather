@@ -7,7 +7,8 @@ class DisplayWeather
 
         @weather = Weather.new
         binding.pry
-        @weather.set_retry
+        @weather.get_address
+        # @weather.set_retry
         binding.pry
     end
     
