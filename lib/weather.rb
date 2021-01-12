@@ -16,7 +16,7 @@ class Weather
 
     def get_address
         response = 'n'
-
+binding.pry
         while (@address_type != 4 && response == 'n')
             print "\nChoose location type to enter:\n\t[1] Zip code only\n\t[2] City, State\n\t[3] Full Address\n\t[4] Quit\nEnter your choice: "
             @address_type = gets.chomp.to_i
