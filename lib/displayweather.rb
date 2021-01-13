@@ -1,15 +1,56 @@
 class DisplayWeather
 
-    attr_reader :weather
+    attr_reader :weather, :address_type, :address
 
     def self.run
         puts "\nLet's get the weather!"
 
         @weather = Weather.new
         binding.pry
-        @weather.get_address
+        self.set_address
         # @weather.set_retry
         binding.pry
+    end
+
+    def self.set_address
+        binding.pry
+        response = 'n'
+binding.pry
+        while (@address_type != 4 && response == 'n')
+            print "\nChoose location type to enter:\n\t[1] Zip code only\n\t[2] City, State\n\t[3] Full Address\n\t[4] Quit\nEnter your choice: "
+            @address_type = gets.chomp.to_i
+
+            if @address_type == 1 then # zipcode only
+                print "\nEnter zipcode: "
+                @address = gets.chomp
+                if /\A\d{5}\z/.match(@address) == nil
+                    puts "This is not a valid zipcode. Please enter a valid zip code." 
+                    response = 'n'
+                    next
+                end
+            elsif @address_type == 2 then # city & state
+                print "\nEnter city, state: "
+                @address = gets.chomp
+            elsif @address_type == 3 then # full address
+                print "\nEnter full address (street, city, state, zipcode): "
+                @address = gets.chomp
+            elsif @address_type == 4 then # quit
+                puts "\nHave a great day!"
+                @quit = true
+                break    
+            else
+                puts "Not a valid option, please make a selection from the menu."
+                response = 'n'
+                next
+            end
+
+            print "You entered #{@address}, is this correct? Enter Y or N: "
+            response = gets.chomp.downcase
+
+            if response == 'y' then
+                puts "\nLet's get some weather!"
+            end
+        end
     end
     
 end
