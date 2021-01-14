@@ -13,7 +13,7 @@ class DisplayWeather
     end
 
     def self.set_address
-        binding.pry
+
         response = 'n'
 binding.pry
         while (@address_type != 4 && response == 'n')
