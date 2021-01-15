@@ -7,20 +7,25 @@ class Address
         @response = 'n'
     end
 
-    def return_address
+    def return_address(weather)
         binding.pry
         while (@address_type != 4 && @response == 'n')
             get_address_type
             if (@address_type == 4)
                 puts "\nHave a great day!"
+                binding.pry
+                weather.quit = true
+                break
             end
             request_address_input
+            binding.pry
         end
     end
 
     def get_address_type
         print "\nChoose location type to enter:\n\t[1] Zip code only\n\t[2] City, State\n\t[3] Full Address\n\t[4] Quit\nEnter your choice: "
-        @address_type = gets.chomp.to_i        
+        @address_type = gets.chomp.to_i
+        binding.pry
     end
 
     def request_address_input

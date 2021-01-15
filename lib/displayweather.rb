@@ -13,7 +13,7 @@ class DisplayWeather
         @address = Address.new
 
         binding.pry
-        @address.return_address
+        @address.return_address(@weather)
         binding.pry
     end
 
