@@ -7,7 +7,7 @@ class Address
         @response = 'n'
     end
 
-    def return_address(weather)
+    def return_address(display_weather)
         binding.pry
         while (@address_type != 4 && @response == 'n')
             get_address_type

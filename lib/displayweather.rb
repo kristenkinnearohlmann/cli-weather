@@ -1,23 +1,27 @@
 class DisplayWeather
 
-    attr_reader :weather, :address
+    attr_reader :weather, :address, :retry, :quit
 
     def initialize
-
+        @weather = Weather.new
+        @address = Address.new
+        @retry = false
+        @quit = false
     end
 
     def self.run
         puts "\nLet's get the weather!"
 
-        @weather = Weather.new
-        @address = Address.new
+        display_weather  = self.new
+        # @weather = Weather.new
+        # @address = Address.new
 
         binding.pry
-        @address.return_address(@weather)
+        display_weather.address.return_address(display_weather)
         binding.pry
     end
 
-    def self.set_address
+    def set_address
 
         response = 'n'
 binding.pry
