@@ -14,13 +14,10 @@ class Address
             puts "\nHave a great day!"
             display_weather.weather.quit = true
         else
-            # request_address_input
-            binding.pry
-            if !verified_address?
+            while !verified_address?
                 request_address_input
-            else
-                display_weather.weather.quit = true
             end
+            display_weather.weather.quit = true
             binding.pry
         end
     end
@@ -43,6 +40,8 @@ class Address
     end
 
     def verified_address?
+        return false if @address == nil
+
         if @address_type == 1 then # zipcode only
             if /\A\d{5}\z/.match(@address) == nil
                 puts "This is not a valid zipcode. Please enter a valid zip code." 
@@ -50,6 +49,8 @@ class Address
             else
                 return true
             end
+        else
+            return true
         end
     end
 
