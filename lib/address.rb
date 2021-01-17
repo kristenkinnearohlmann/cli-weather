@@ -8,16 +8,19 @@ class Address
     end
 
     def return_address(display_weather)
+        get_address_type
         binding.pry
-        while (@address_type != 4 && @response == 'n')
-            get_address_type
-            if (@address_type == 4)
-                puts "\nHave a great day!"
-                binding.pry
-                weather.quit = true
-                break
+        if (@address_type == 4)
+            puts "\nHave a great day!"
+            display_weather.weather.quit = true
+        else
+            # request_address_input
+            binding.pry
+            if !verified_address?
+                request_address_input
+            else
+                display_weather.weather.quit = true
             end
-            request_address_input
             binding.pry
         end
     end
@@ -25,7 +28,6 @@ class Address
     def get_address_type
         print "\nChoose location type to enter:\n\t[1] Zip code only\n\t[2] City, State\n\t[3] Full Address\n\t[4] Quit\nEnter your choice: "
         @address_type = gets.chomp.to_i
-        binding.pry
     end
 
     def request_address_input
@@ -38,6 +40,17 @@ class Address
         end
 
         @address = gets.chomp
+    end
+
+    def verified_address?
+        if @address_type == 1 then # zipcode only
+            if /\A\d{5}\z/.match(@address) == nil
+                puts "This is not a valid zipcode. Please enter a valid zip code." 
+                return false
+            else
+                return true
+            end
+        end
     end
 
 end

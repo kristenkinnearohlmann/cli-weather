@@ -13,8 +13,6 @@ class DisplayWeather
         puts "\nLet's get the weather!"
 
         display_weather  = self.new
-        # @weather = Weather.new
-        # @address = Address.new
 
         binding.pry
         display_weather.address.return_address(display_weather)
@@ -24,7 +22,6 @@ class DisplayWeather
     def set_address
 
         response = 'n'
-binding.pry
         while (@address_type != 4 && response == 'n')
             
 
