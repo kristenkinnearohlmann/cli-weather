@@ -13,6 +13,10 @@ class Address
         if (@address_type == 4)
             puts "\nHave a great day!"
             display_weather.weather.quit = true
+        elsif (@address_type < 1 || @address_type > 3)
+            # TODO: figure out proper looping for this
+            puts "#{address_type} is not a valid option. Please make a valid selection."
+            get_address_type
         else
             while !verified_address?
                 request_address_input
