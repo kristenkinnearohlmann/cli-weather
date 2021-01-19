@@ -3,4 +3,5 @@
 require_relative '../config/environment'
 
 puts "Ruby CLI Weather"
-DisplayWeather.run
+forecast = DisplayWeather.new
+forecast.run
