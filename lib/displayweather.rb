@@ -12,8 +12,8 @@ class DisplayWeather
     def run
         puts "\nLet's get the weather!"
 
+        address.return_address(self)
         binding.pry
-        # display_weather.address.return_address(display_weather)
     end
 
     # def set_address

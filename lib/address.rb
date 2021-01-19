@@ -12,8 +12,7 @@ class Address
 
         if (@address_type == 4)
             puts "\nHave a great day!"
-            binding.pry
-            display_weather.weather.quit = true
+            display_weather.quit = true
         elsif (@address_type < 1 || @address_type > 3)
             # TODO: figure out proper looping for this
             puts "#{address_type} is not a valid option. Please make a valid selection."
@@ -22,9 +21,7 @@ class Address
             while !verified_address?
                 request_address_input
             end
-            binding.pry
-            display_weather.weather.quit = true
-            binding.pry
+            display_weather.quit = true
         end
     end
 
