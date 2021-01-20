@@ -52,17 +52,14 @@ class Address
     end
 
     def verified_address?
-        return false if @address == nil
 
-        if @address_type == 1 then # zipcode only
-            if /\A\d{5}\z/.match(@address) == nil
-                puts "This is not a valid zipcode. Please enter a valid zip code." 
-                false
-            else
-                binding.pry
-                true
-            end
+        if (@address_type == 1 && /\A\d{5}\z/.match(@address) == nil) # malformed zipcode
+            puts "This is not a valid zipcode. Please enter a valid zip code." 
+            false
         else
+            chk_val = address.split(",")
+            chk_val.collect! { |e| e ? e.strip : e }
+            binding.pry
             true
         end
     end
