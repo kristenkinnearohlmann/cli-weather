@@ -41,7 +41,7 @@ class Address
             if @address_type == 1 then # zipcode only
                 print "\nEnter zipcode: "
             elsif @address_type == 2 then # city & state
-                print "\nEnter city, state: "
+                print "\nEnter city and state (CITY,STATE): "
             elsif @address_type == 3 then # full address
                 print "\nEnter full address (street, city, state, zipcode): "
             end
