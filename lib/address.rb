@@ -21,7 +21,7 @@ class Address
 
     def get_address_type
         loop do
-            print "\nChoose location type to enter:\n\t[1] Zip code only\n\t[2] City, State\n\t[3] Full Address\n\t[4] Quit\nEnter your choice: "
+            print "\nChoose location type to enter:\n\t[1] Zip code only\n\t[2] City and State\n\t[3] Full Address\n\t[4] Quit\nEnter your choice: "
             @address_type = gets.chomp.to_i
             break if valid_address_type?
         end
@@ -39,16 +39,33 @@ class Address
     def request_address_input
         loop do 
             if @address_type == 1 then # zipcode only
-                print "\nEnter zipcode: "
+                @address = get_zipcode
             elsif @address_type == 2 then # city & state
-                print "\nEnter city and state (CITY,STATE ABBREV): "
+                @address = get_city
+                @address = @address + " " + get_state
+                binding.pry
             elsif @address_type == 3 then # full address
                 print "\nEnter full address (STREET,CITY,STATE ABBREV,ZIPCODE): "
             end
 
-            @address = gets.chomp
+            # @address = gets.chomp
             break if verified_address?
         end
+    end
+
+    def get_zipcode
+        print "Enter zipcode: "
+        gets.chomp
+    end
+
+    def get_city
+        print "Enter city: "
+        gets.chomp
+    end
+
+    def get_state
+        print "Enter state abbreviation (ex. AL): "
+        gets.chomp
     end
 
     def verified_address?
@@ -56,10 +73,12 @@ class Address
         if (@address_type == 1 && /\A\d{5}\z/.match(@address) == nil) # malformed zipcode
             puts "This is not a valid zipcode. Please enter a valid zip code." 
             false
-        else
-            chk_val = address.split(",")
+        elsif (@address_type == 2 || @address_type == 3)
+            chk_val = address.split(" ")
             chk_val.collect! { |e| e ? e.strip : e }
             binding.pry
+            true
+        else
             true
         end
     end
