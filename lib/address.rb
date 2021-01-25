@@ -1,6 +1,6 @@
 class Address
 
-    attr_reader :address_type, :address
+    attr_reader :address_type, :address, :valid
     
     def initialize
         @address_type = nil
@@ -14,6 +14,7 @@ class Address
                 display_weather.quit = true
             else
                 request_address_input
+                binding.pry
                 display_weather.quit = true
             end
         end
@@ -37,50 +38,62 @@ class Address
     end
 
     def request_address_input
-        loop do 
-            if @address_type == 1 then # zipcode only
-                @address = get_zipcode
-            elsif @address_type == 2 then # city & state
-                @address = get_city
-                @address = @address + " " + get_state
-                binding.pry
-            elsif @address_type == 3 then # full address
-                print "\nEnter full address (STREET,CITY,STATE ABBREV,ZIPCODE): "
-            end
 
-            # @address = gets.chomp
-            break if verified_address?
+        if @address_type == 1 then # zipcode only
+            @address = get_zipcode
+        elsif @address_type == 2 then # city & state
+            @address = get_city
+            @address = @address + ", " + get_state
+            binding.pry
+        elsif @address_type == 3 then # full address
+            print "\nEnter full address (STREET,CITY,STATE ABBREV,ZIPCODE): "
         end
+
     end
 
     def get_zipcode
-        print "Enter zipcode: "
-        gets.chomp
+        @valid = false
+
+        while !@valid
+            print "Enter zipcode: "
+            input = gets.chomp
+            if /\A\d{5}\z/.match(input) == nil # malformed zipcode
+                puts "This is not a valid zipcode. Please enter a valid zip code." 
+            else
+                @valid = true
+            end
+        end
+        input
     end
 
     def get_city
-        print "Enter city: "
-        gets.chomp
+        @valid = false
+
+        while !@valid
+            print "Enter city: "
+            input = gets.chomp
+            @valid = true
+        end
+        input
     end
 
     def get_state
-        print "Enter state abbreviation (ex. AL): "
-        gets.chomp
-    end
+        @valid = false
+        state_abbrevs = ['AL','AK','AZ','AR','CA','CO','CT','DE','DC','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','PR','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY']
 
-    def verified_address?
+        while !@valid
+            print "Enter state abbreviation (ex. AL): "
+            input = gets.chomp
 
-        if (@address_type == 1 && /\A\d{5}\z/.match(@address) == nil) # malformed zipcode
-            puts "This is not a valid zipcode. Please enter a valid zip code." 
-            false
-        elsif (@address_type == 2 || @address_type == 3)
-            chk_val = address.split(" ")
-            chk_val.collect! { |e| e ? e.strip : e }
-            binding.pry
-            true
-        else
-            true
+            if input.length < 2 || input.length > 2 # entry longer than 2 characters
+                puts "You have not entered 2 characters. Please enter a 2 character state abbreviation."
+            elsif !state_abbrevs.include? input
+                puts "This is not a valid state abbreviation. Please enter a valid state abbreviation."
+            else
+                @valid = true
+            end
         end
+        input
     end
 
 end
