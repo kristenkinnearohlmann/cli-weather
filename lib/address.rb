@@ -14,7 +14,6 @@ class Address
                 display_weather.quit = true
             else
                 request_address_input
-                binding.pry
                 display_weather.quit = true
             end
         end
@@ -42,26 +41,20 @@ class Address
         if @address_type == 1 then # zipcode only
             @address = get_zipcode
         elsif @address_type == 2 then # city & state
-            @address = get_city
-            @address = @address + ", " + get_state
-            binding.pry
+            @address = get_city + ", " + get_state
         elsif @address_type == 3 then # full address
-            print "\nEnter full address (STREET,CITY,STATE ABBREV,ZIPCODE): "
+            @address = get_address + ", " + get_city + ", " + get_state + ", " + get_zipcode
         end
 
     end
 
-    def get_zipcode
+    def get_address
         @valid = false
 
         while !@valid
-            print "Enter zipcode: "
+            print "Enter street address: "
             input = gets.chomp
-            if /\A\d{5}\z/.match(input) == nil # malformed zipcode
-                puts "This is not a valid zipcode. Please enter a valid zip code." 
-            else
-                @valid = true
-            end
+            @valid = true
         end
         input
     end
@@ -89,6 +82,21 @@ class Address
                 puts "You have not entered 2 characters. Please enter a 2 character state abbreviation."
             elsif !state_abbrevs.include? input
                 puts "This is not a valid state abbreviation. Please enter a valid state abbreviation."
+            else
+                @valid = true
+            end
+        end
+        input
+    end
+
+    def get_zipcode
+        @valid = false
+
+        while !@valid
+            print "Enter zipcode: "
+            input = gets.chomp
+            if /\A\d{5}\z/.match(input) == nil # malformed zipcode
+                puts "This is not a valid zipcode. Please enter a valid zip code." 
             else
                 @valid = true
             end
