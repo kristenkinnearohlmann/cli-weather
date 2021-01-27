@@ -10,9 +10,10 @@ class Geolocation
         @geo_data = {}
     end
 
-    def select_geolocation(weather)
-        address_type = weather.address_type
-        address = weather.address
+    def select_geolocation(display_weather)
+
+        address_type = display_weather.address_type
+        address = display_weather.address
         binding.pry
         msg = "Finding weather for"
 

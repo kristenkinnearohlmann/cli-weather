@@ -1,10 +1,11 @@
 class DisplayWeather
 
-    attr_accessor :weather, :address, :retry, :quit
+    attr_accessor :weather, :address, :geolocation, :retry, :quit
 
     def initialize
         @weather = Weather.new
         @address = Address.new
+        @geolocation = Geolocation.new
         @retry = false
         @quit = false
     end
@@ -14,6 +15,7 @@ class DisplayWeather
 
         address.return_address(self)
         binding.pry
+        geolocation.select_geolocation(self)
     end
 
     # def set_address
