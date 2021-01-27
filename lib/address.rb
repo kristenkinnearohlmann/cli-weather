@@ -4,6 +4,7 @@ class Address
     
     def initialize
         @address_type = nil
+        @address = []
     end
 
     def return_address(display_weather)
@@ -39,11 +40,15 @@ class Address
     def request_address_input
 
         if @address_type == 1 then # zipcode only
-            @address = get_zipcode
+            @address.push(get_zipcode)
         elsif @address_type == 2 then # city & state
-            @address = get_city + ", " + get_state
+            @address.push(get_city)
+            @address.push(get_state)
         elsif @address_type == 3 then # full address
-            @address = get_address + ", " + get_city + ", " + get_state + ", " + get_zipcode
+            @address.push(get_address)
+            @address.push(get_city)
+            @address.push(get_state)
+            @address.push(get_zipcode)
         end
 
     end
