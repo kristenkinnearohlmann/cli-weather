@@ -12,22 +12,19 @@ class DisplayWeather
 
     def run
         puts "\nLet's get the weather!"
-
+        binding.pry
         address.return_address(self)
         binding.pry
         geolocation.select_geolocation(self)
     end
 
-    # def set_address
+    def address_type
+        self.address.address_type
+    end
 
+    def address_type=(value)
+        binding.pry
+        self.address.address_type = value
+    end
 
-    #         print "You entered #{@address}, is this correct? Enter Y or N: "
-    #         response = gets.chomp.downcase
-
-    #         if response == 'y' then
-    #             puts "\nLet's get some weather!"
-    #         end
-    #     end
-    # end
-    
 end
