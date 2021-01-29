@@ -20,11 +20,11 @@ class DisplayWeather
 
     def address_type
         self.address.address_type
-    end
+    end 
 
-    def address_type=(value)
-        binding.pry
-        self.address.address_type = value
-    end
+    # def address_type=(address_type)
+    #     binding.pry
+    #     @address.address_type = address_type
+    # end
 
 end
