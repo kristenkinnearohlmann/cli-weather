@@ -13,25 +13,15 @@ class Geolocation
     def select_geolocation(display_weather)
 
         address_type = display_weather.address_type
-        address = display_weather.address
-        binding.pry
-        msg = "Finding weather for"
+        address_values = display_weather.address_values.join(", ")
 
-        if address_type == 1 then # zipcode only
-            puts "#{msg} #{address} by zipcode"
-        elsif address_type == 2 then # city & state
-            address.sub!(",","")            
-            puts "#{msg} #{address} by city and state"
-        elsif address_type ==3 then # full address
-            # format: "5032 Nine Mile Creek Parkway, Bloomington MN"
-            puts "#{msg} #{address} by full address"
-        end
+        puts "Finding weather for #{address_values}."
 
-        get_location_information(address)
+        get_location_information(address_values)
     end
 
-    def get_location_information(address)
-        url = "http://api.positionstack.com/v1/forward?access_key=#{API_KEY}&query=#{address}"
+    def get_location_information(address_values)
+        url = "http://api.positionstack.com/v1/forward?access_key=#{API_KEY}&query=#{address_values}"
         @geo_data_raw = get_api_data(url)
         @loc_index = select_location
 

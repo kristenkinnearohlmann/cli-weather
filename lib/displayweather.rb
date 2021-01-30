@@ -12,15 +12,19 @@ class DisplayWeather
 
     def run
         puts "\nLet's get the weather!"
-        binding.pry
+
         address.return_address(self)
         binding.pry
-        geolocation.select_geolocation(self)
+        geolocation.select_geolocation(self) if !@quit
     end
 
     def address_type
         self.address.address_type
-    end 
+    end
+
+    def address_values
+        self.address.address_values
+    end
 
     # def address_type=(address_type)
     #     binding.pry

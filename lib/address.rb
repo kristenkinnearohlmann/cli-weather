@@ -1,10 +1,10 @@
 class Address
 
-    attr_reader :address_type, :address, :valid
+    attr_reader :address_type, :address_values, :valid
     
     def initialize
         @address_type = nil
-        @address = []
+        @address_values = []
     end
 
     def return_address(display_weather)
@@ -15,7 +15,6 @@ class Address
                 display_weather.quit = true
             else
                 request_address_input
-                display_weather.quit = true
             end
         end
     end
@@ -40,15 +39,15 @@ class Address
     def request_address_input
 
         if @address_type == 1 then # zipcode only
-            @address.push(get_zipcode)
+            @address_values.push(get_zipcode)
         elsif @address_type == 2 then # city & state
-            @address.push(get_city)
-            @address.push(get_state)
+            @address_values.push(get_city)
+            @address_values.push(get_state)
         elsif @address_type == 3 then # full address
-            @address.push(get_address)
-            @address.push(get_city)
-            @address.push(get_state)
-            @address.push(get_zipcode)
+            @address_values.push(get_address)
+            @address_values.push(get_city)
+            @address_values.push(get_state)
+            @address_values.push(get_zipcode)
         end
 
     end
