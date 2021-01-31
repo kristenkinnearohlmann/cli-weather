@@ -16,19 +16,26 @@ class Geolocation
         address_values = display_weather.address_values.join(", ")
 
         puts "Finding weather for #{address_values}."
-
+        binding.pry
         get_location_information(address_values)
+        binding.pry
     end
 
     def get_location_information(address_values)
+
         url = "http://api.positionstack.com/v1/forward?access_key=#{API_KEY}&query=#{address_values}"
         @geo_data_raw = get_api_data(url)
-        @loc_index = select_location
 
-        if (@loc_index >= 0) then
-            get_geo_data
-        end
-    end
+    end    
+    # def get_location_information(address_values)
+    #     url = "http://api.positionstack.com/v1/forward?access_key=#{API_KEY}&query=#{address_values}"
+    #     @geo_data_raw = get_api_data(url)
+    #     @loc_index = select_location
+
+    #     if (@loc_index >= 0) then
+    #         get_geo_data
+    #     end
+    # end
 
     def get_api_data(url)
         response = HTTParty.get(url)
