@@ -14,8 +14,8 @@ class DisplayWeather
         puts "\nLet's get the weather!"
 
         address.return_address(self)
-        binding.pry
         geolocation.select_geolocation(self) if !@quit
+        binding.pry
     end
 
     def address_type

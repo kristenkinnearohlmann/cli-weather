@@ -16,8 +16,9 @@ class Geolocation
         address_values = display_weather.address_values.join(", ")
 
         puts "Finding weather for #{address_values}."
-        binding.pry
+
         get_location_information(address_values)
+        select_location if !@geo_data_raw.empty?
         binding.pry
     end
 
@@ -44,6 +45,7 @@ class Geolocation
     end
 
     def select_location
+        binding.pry
         # geo_data_raw is an array of 0 or more hash elements
         index_nbr = -1
 
