@@ -17,17 +17,13 @@ class Geolocation
 
         puts "Finding weather for #{address_values}."
 
-        get_location_information(address_values)
-        select_location if !@geo_data_raw.empty?
-        binding.pry
+        while !display_weather.retry
+            get_location_information(address_values)
+            handle_location
+            binding.pry
+        end
     end
 
-    def get_location_information(address_values)
-
-        url = "http://api.positionstack.com/v1/forward?access_key=#{API_KEY}&query=#{address_values}"
-        @geo_data_raw = get_api_data(url)
-
-    end    
     # def get_location_information(address_values)
     #     url = "http://api.positionstack.com/v1/forward?access_key=#{API_KEY}&query=#{address_values}"
     #     @geo_data_raw = get_api_data(url)
@@ -38,17 +34,27 @@ class Geolocation
     #     end
     # end
 
+    def get_location_information(address_values)
+
+        url = "http://api.positionstack.com/v1/forward?access_key=#{API_KEY}&query=#{address_values}"
+        @geo_data_raw = get_api_data(url)
+
+    end    
+
+
     def get_api_data(url)
         response = HTTParty.get(url)
         @geo_data_raw = JSON.parse(response.body)
         @geo_data_raw["data"]
     end
 
-    def select_location
+    def handle_location
         binding.pry
         # geo_data_raw is an array of 0 or more hash elements
         index_nbr = -1
 
+        return if @geo_data_raw.empty?
+        binding.pry
         if @geo_data_raw.length == 0 then
             puts "No results found" # index_nbr is already set to -1
         elsif @geo_data_raw.length == 1 then
