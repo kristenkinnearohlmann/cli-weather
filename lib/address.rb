@@ -9,12 +9,16 @@ class Address
 
     def return_address(display_weather)
         if (display_weather.quit == false || display_weather.retry == true)
+            binding.pry
             get_address_type
             if @address_type == 4 # User selected quit
                 puts "\nHave a great day!"
                 display_weather.quit = true
             else
                 request_address_input
+                binding.pry
+                display_weather.geolocation.get_location_information(@address_values)
+                binding.pry
             end
         end
     end
@@ -50,6 +54,7 @@ class Address
             @address_values.push(get_zipcode)
         end
 
+        @address_values = @address_values.join(",")
     end
 
     def get_address

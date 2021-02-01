@@ -1,7 +1,6 @@
 class Geolocation
 
-    attr_accessor :city, :state, :zipcode, :weather
-    attr_reader :address_full, :lat_lon, :geo_data_raw, :loc_index, :geo_data
+    attr_reader :lat_lon, :geo_data_raw, :loc_index, :geo_data
 
     # How can this be hidden from GitHub?
     API_KEY = "c945744d9d15f2e14ff811ff3900a645"
@@ -14,6 +13,7 @@ class Geolocation
 
         address_type = display_weather.address_type
         address_values = display_weather.address_values.join(", ")
+
 
         puts "Finding weather for #{address_values}."
 
@@ -43,9 +43,11 @@ class Geolocation
 
 
     def get_api_data(url)
+
         response = HTTParty.get(url)
         @geo_data_raw = JSON.parse(response.body)
         @geo_data_raw["data"]
+
     end
 
     def handle_location
