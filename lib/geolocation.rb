@@ -9,20 +9,20 @@ class Geolocation
         @geo_data = {}
     end
 
-    def select_geolocation(display_weather)
+    # def select_geolocation(display_weather)
+    #     binding.pry
+    #     # address_type = display_weather.address_type
+    #     # address_values = display_weather.address_values.join(", ")
 
-        address_type = display_weather.address_type
-        address_values = display_weather.address_values.join(", ")
 
+    #     # puts "Finding weather for #{address_values}."
 
-        puts "Finding weather for #{address_values}."
-
-        while !display_weather.retry
-            get_location_information(address_values)
-            handle_location
-            binding.pry
-        end
-    end
+    #     # while !display_weather.retry
+    #     #     get_location_information(address_values)
+    #     #     handle_location
+    #     #     binding.pry
+    #     # end
+    # end
 
     # def get_location_information(address_values)
     #     url = "http://api.positionstack.com/v1/forward?access_key=#{API_KEY}&query=#{address_values}"

@@ -8,17 +8,20 @@ class Address
     end
 
     def return_address(display_weather)
-        if (display_weather.quit == false || display_weather.retry == true)
-            binding.pry
+
+        while (display_weather.quit == false && @address_values.empty?)
+
             get_address_type
             if @address_type == 4 # User selected quit
                 puts "\nHave a great day!"
                 display_weather.quit = true
             else
                 request_address_input
-                binding.pry
-                display_weather.geolocation.get_location_information(@address_values)
-                binding.pry
+
+                if !valid_address?(display_weather)
+                    puts "\nThis address does not return results. Please enter a new address."
+                    @address_values = []
+                end
             end
         end
     end
@@ -29,6 +32,10 @@ class Address
             @address_type = gets.chomp.to_i
             break if valid_address_type?
         end
+    end
+
+    def valid_address?(display_weather)
+        display_weather.geolocation.get_location_information(@address_values).empty? ? false : true
     end
 
     def valid_address_type?
@@ -43,47 +50,52 @@ class Address
     def request_address_input
 
         if @address_type == 1 then # zipcode only
-            @address_values.push(get_zipcode)
+            get_zipcode
         elsif @address_type == 2 then # city & state
-            @address_values.push(get_city)
-            @address_values.push(get_state)
+            get_city
+            get_state
         elsif @address_type == 3 then # full address
-            @address_values.push(get_address)
-            @address_values.push(get_city)
-            @address_values.push(get_state)
-            @address_values.push(get_zipcode)
+            get_address
+            get_city
+            get_state
+            get_zipcode
         end
 
         @address_values = @address_values.join(",")
+
     end
 
     def get_address
-        @valid = false
+        valid = false
 
-        while !@valid
+        while !valid
             print "Enter street address: "
             input = gets.chomp
-            @valid = true
+            @address_values.push(input)
+            valid = true
         end
-        input
+
     end
 
     def get_city
-        @valid = false
+        valid = false
 
-        while !@valid
+        while !valid
             print "Enter city: "
             input = gets.chomp
-            @valid = true
+            @address_values.push(input)
+            valid = true
         end
-        input
+
     end
 
     def get_state
-        @valid = false
+
+        valid = false
+
         state_abbrevs = ['AL','AK','AZ','AR','CA','CO','CT','DE','DC','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','PR','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY']
 
-        while !@valid
+        while !valid
             print "Enter state abbreviation (ex. AL): "
             input = gets.chomp
 
@@ -92,25 +104,29 @@ class Address
             elsif !state_abbrevs.include? input
                 puts "This is not a valid state abbreviation. Please enter a valid state abbreviation."
             else
-                @valid = true
+                @address_values.push(input)
+                valid = true
             end
         end
-        input
+
     end
 
     def get_zipcode
-        @valid = false
 
-        while !@valid
+        valid = false
+
+        while !valid
             print "Enter zipcode: "
             input = gets.chomp
+
             if /\A\d{5}\z/.match(input) == nil # malformed zipcode
                 puts "This is not a valid zipcode. Please enter a valid zip code." 
             else
-                @valid = true
+                @address_values.push(input)
+                valid = true
             end
         end
-        input
+
     end
 
 end
