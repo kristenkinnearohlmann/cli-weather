@@ -52,27 +52,28 @@ class Geolocation
 
     def handle_location
         binding.pry
-        # geo_data_raw is an array of 0 or more hash elements
-        index_nbr = -1
+        @loc_index = 99
+        # # geo_data_raw is an array of 0 or more hash elements
+        # index_nbr = -1
 
-        return if @geo_data_raw.empty?
-        binding.pry
-        if @geo_data_raw.length == 0 then
-            puts "No results found" # index_nbr is already set to -1
-        elsif @geo_data_raw.length == 1 then
-            puts "Found one result - processing your weather now..."
-            index_nbr = 0 # single result, array element 0
-        elsif @geo_data_raw.length > 1 then
-            puts "Found #{@geo_data_raw.length} results. Please choose which location to use: "
-            index_nbr = choose_location
-            if index_nbr == -2 then # select the option for None
-                puts "You selected none of these choices"
-            else
-                puts "Processing weather for #{@geo_data_raw[index_nbr]["label"]}"
-            end
+        # return if @geo_data_raw.empty?
+        # binding.pry
+        # if @geo_data_raw.length == 0 then
+        #     puts "No results found" # index_nbr is already set to -1
+        # elsif @geo_data_raw.length == 1 then
+        #     puts "Found one result - processing your weather now..."
+        #     index_nbr = 0 # single result, array element 0
+        # elsif @geo_data_raw.length > 1 then
+        #     puts "Found #{@geo_data_raw.length} results. Please choose which location to use: "
+        #     index_nbr = choose_location
+        #     if index_nbr == -2 then # select the option for None
+        #         puts "You selected none of these choices"
+        #     else
+        #         puts "Processing weather for #{@geo_data_raw[index_nbr]["label"]}"
+        #     end
             
-        end
-        index_nbr  
+        # end
+        # index_nbr  
     end
 
     def choose_location
