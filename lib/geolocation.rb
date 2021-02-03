@@ -9,6 +9,12 @@ class Geolocation
         @geo_data = {}
     end
 
+    def select_geolocation
+        binding.pry
+        handle_location
+        get_geo_data
+    end
+
     # def select_geolocation(display_weather)
     #     binding.pry
     #     # address_type = display_weather.address_type
@@ -52,11 +58,10 @@ class Geolocation
 
     def handle_location
         binding.pry
-        @loc_index = 99
+
         # # geo_data_raw is an array of 0 or more hash elements
         # index_nbr = -1
 
-        # return if @geo_data_raw.empty?
         # binding.pry
         # if @geo_data_raw.length == 0 then
         #     puts "No results found" # index_nbr is already set to -1
@@ -90,7 +95,7 @@ class Geolocation
     end
 
     def get_geo_data
-
+        binding.pry
         geo_hash = @geo_data_raw[@loc_index]
 
         geo_hash.each do |key,value|
