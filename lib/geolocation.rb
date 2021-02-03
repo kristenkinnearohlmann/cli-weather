@@ -59,7 +59,15 @@ class Geolocation
     def handle_location
         binding.pry
 
-        # # geo_data_raw is an array of 0 or more hash elements
+        # geo_data_raw is an array of 0 or more hash elements
+        if @geo_data_raw.length > 1 then
+            puts "Found #{@geo_data_raw.length} results. Please choose which location to use: "
+            @loc_index = choose_location
+        else
+            @loc_index = 0
+        end
+        
+        puts "Processing weather for #{@geo_data_raw[index_nbr]["label"]}"
         # index_nbr = -1
 
         # binding.pry
