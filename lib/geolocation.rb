@@ -10,34 +10,11 @@ class Geolocation
     end
 
     def select_geolocation
+        # TODO: Handle "no choice" response
         handle_location
+        # TODO: FInish
         get_geo_data
     end
-
-    # def select_geolocation(display_weather)
-    #     binding.pry
-    #     # address_type = display_weather.address_type
-    #     # address_values = display_weather.address_values.join(", ")
-
-
-    #     # puts "Finding weather for #{address_values}."
-
-    #     # while !display_weather.retry
-    #     #     get_location_information(address_values)
-    #     #     handle_location
-    #     #     binding.pry
-    #     # end
-    # end
-
-    # def get_location_information(address_values)
-    #     url = "http://api.positionstack.com/v1/forward?access_key=#{API_KEY}&query=#{address_values}"
-    #     @geo_data_raw = get_api_data(url)
-    #     @loc_index = select_location
-
-    #     if (@loc_index >= 0) then
-    #         get_geo_data
-    #     end
-    # end
 
     def get_location_information(address_values)
 
@@ -45,7 +22,6 @@ class Geolocation
         @geo_data_raw = get_api_data(url)
 
     end    
-
 
     def get_api_data(url)
 
@@ -65,27 +41,9 @@ class Geolocation
         else
             @loc_index = 0
         end
-        binding.pry
-        puts "Processing weather for #{@geo_data_raw[index_nbr]["label"]}"
-        # index_nbr = -1
 
-        # binding.pry
-        # if @geo_data_raw.length == 0 then
-        #     puts "No results found" # index_nbr is already set to -1
-        # elsif @geo_data_raw.length == 1 then
-        #     puts "Found one result - processing your weather now..."
-        #     index_nbr = 0 # single result, array element 0
-        # elsif @geo_data_raw.length > 1 then
-        #     puts "Found #{@geo_data_raw.length} results. Please choose which location to use: "
-        #     index_nbr = choose_location
-        #     if index_nbr == -2 then # select the option for None
-        #         puts "You selected none of these choices"
-        #     else
-        #         puts "Processing weather for #{@geo_data_raw[index_nbr]["label"]}"
-        #     end
-            
-        # end
-        # index_nbr  
+        puts "Processing weather for #{@geo_data_raw[index_nbr]["label"]}"
+
     end
 
     def choose_location
