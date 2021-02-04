@@ -10,7 +10,6 @@ class Geolocation
     end
 
     def select_geolocation
-        binding.pry
         handle_location
         get_geo_data
     end
@@ -66,7 +65,7 @@ class Geolocation
         else
             @loc_index = 0
         end
-        
+        binding.pry
         puts "Processing weather for #{@geo_data_raw[index_nbr]["label"]}"
         # index_nbr = -1
 
@@ -93,12 +92,19 @@ class Geolocation
         @geo_data_raw.each_index do |index|
             puts "\t[#{index+1}] #{@geo_data_raw[index]["label"]}"
         end
-        puts "\t[#{@geo_data_raw.count+1}] None of these choices"
+
+        no_choice = @geo_data_raw.count+1
+        puts "\t[#{no_choice}] None of these choices"
 
         print "Location choice: "
-        choice_nbr = (gets.chomp.to_i) - 1
+        choice_nbr = (gets.chomp.to_i)
 
-        choice_nbr = -2 if choice_nbr == @geo_data_raw.count # set to -2 if None selection is made
+        if choice_nbr == no_choice
+            choice_nbr = nil
+        else
+            choice_nbr -= 1
+        end
+
         choice_nbr
     end
 
