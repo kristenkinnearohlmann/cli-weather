@@ -13,7 +13,7 @@ class Geolocation
         # TODO: Handle "no choice" response
         handle_location
         # TODO: FInish
-        get_geo_data
+        # get_geo_data
     end
 
     def get_location_information(address_values)
@@ -41,8 +41,8 @@ class Geolocation
         else
             @loc_index = 0
         end
-
-        puts "Processing weather for #{@geo_data_raw[index_nbr]["label"]}"
+        binding.pry
+        puts "Processing weather for #{@geo_data_raw[@loc_index]["label"]}"
 
     end
 
