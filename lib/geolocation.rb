@@ -9,11 +9,12 @@ class Geolocation
         @geo_data = {}
     end
 
-    def select_geolocation
-        # TODO: Handle "no choice" response
-        handle_location
+    def select_geolocation(display_weather)
+
+        handle_location(display_weather)
         # TODO: FInish
-        # get_geo_data
+        # get_geo_data if !display_weather.quit
+
     end
 
     def get_location_information(address_values)
@@ -31,8 +32,7 @@ class Geolocation
 
     end
 
-    def handle_location
-        binding.pry
+    def handle_location(display_weather)
 
         # geo_data_raw is an array of 0 or more hash elements
         if @geo_data_raw.length > 1 then
@@ -41,8 +41,13 @@ class Geolocation
         else
             @loc_index = 0
         end
-        binding.pry
-        puts "Processing weather for #{@geo_data_raw[@loc_index]["label"]}"
+
+        if @loc_index == nil
+            puts "No choice selected. The program will exit."
+            display_weather.quit = true
+        else
+            puts "Processing weather for #{@geo_data_raw[@loc_index]["label"]}"
+        end
 
     end
 
