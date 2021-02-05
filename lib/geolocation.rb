@@ -12,8 +12,7 @@ class Geolocation
     def select_geolocation(display_weather)
 
         handle_location(display_weather)
-        # TODO: FInish
-        # get_geo_data if !display_weather.quit
+        get_geo_data if !display_weather.quit
 
     end
 
@@ -36,7 +35,7 @@ class Geolocation
 
         # geo_data_raw is an array of 0 or more hash elements
         if @geo_data_raw.length > 1 then
-            puts "Found #{@geo_data_raw.length} results. Please choose which location to use: "
+            puts "\nFound #{@geo_data_raw.length} results. Please choose which location to use: "
             @loc_index = choose_location
         else
             @loc_index = 0
@@ -52,8 +51,10 @@ class Geolocation
     end
 
     def choose_location
+
         @geo_data_raw.each_index do |index|
-            puts "\t[#{index+1}] #{@geo_data_raw[index]["label"]}"
+            item_nbr = index + 1
+            puts "\t[#{item_nbr}] #{@geo_data_raw[index]["label"]}"
         end
 
         no_choice = @geo_data_raw.count+1
@@ -72,7 +73,7 @@ class Geolocation
     end
 
     def get_geo_data
-        binding.pry
+
         geo_hash = @geo_data_raw[@loc_index]
 
         geo_hash.each do |key,value|
