@@ -11,11 +11,22 @@ class DisplayWeather
     end
 
     def run
+
         puts "\nLet's get the weather!"
 
-        address.return_address(self)
-        geolocation.select_geolocation(self) if !@quit
-        binding.pry
+        while !@quit
+            binding.pry
+            address.return_address(self)
+            geolocation.select_geolocation(self) if !@quit
+            weather.get_weather(self) if !@quit
+
+            if !@quit
+                print "\nGet another forecast? Enter Y or N: "
+                response = gets.chomp.downcase
+                @quit = true if response == 'n'
+            end
+        end
+
     end
 
     def address_type
@@ -26,9 +37,8 @@ class DisplayWeather
         self.address.address_values
     end
 
-    # def address_type=(address_type)
-    #     binding.pry
-    #     @address.address_type = address_type
-    # end
+    def geo_data
+        self.geolocation.geo_data
+    end
 
 end
