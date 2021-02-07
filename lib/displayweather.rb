@@ -41,4 +41,8 @@ class DisplayWeather
         self.geolocation.geo_data
     end
 
+    def weather_summary=(weather_summary)
+        @weather.weather_summary = weather_summary
+    end
+
 end
