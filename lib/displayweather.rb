@@ -3,6 +3,10 @@ class DisplayWeather
     attr_accessor :weather, :address, :geolocation, :retry, :quit
 
     def initialize
+        set_attributes
+    end
+
+    def set_attributes
         @weather = Weather.new
         @address = Address.new
         @geolocation = Geolocation.new
@@ -15,7 +19,6 @@ class DisplayWeather
         puts "\nLet's get the weather!"
 
         while !@quit
-            binding.pry
             address.return_address(self)
             geolocation.select_geolocation(self) if !@quit
             weather.get_weather(self) if !@quit
@@ -23,7 +26,13 @@ class DisplayWeather
             if !@quit
                 print "\nGet another forecast? Enter Y or N: "
                 response = gets.chomp.downcase
-                @quit = true if response == 'n'
+                # @quit = true if response == 'n'
+                if response == 'n'
+                    @quit = true
+                    puts "\nHave a great day!"
+                else
+                    set_attributes
+                end
             end
         end
 
@@ -41,8 +50,8 @@ class DisplayWeather
         self.geolocation.geo_data
     end
 
-    def weather_summary=(weather_summary)
-        @weather.weather_summary = weather_summary
-    end
+    # def weather_summary=(weather_summary)
+    #     @weather.weather_summary = weather_summary
+    # end
 
 end

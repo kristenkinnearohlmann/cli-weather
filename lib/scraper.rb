@@ -2,18 +2,20 @@ class Scraper
 
     attr_reader :url, :url_data, :weather_summary
 
-    def self.nws(display_weather)
-        binding.pry
+    def self.nws(weather_summary, geo_data)
+
         @weather_summary = {}
-        lat_val = display_weather.geo_data[:latitude]
-        lon_val = display_weather.geo_data[:longitude]
+        lat_val = geo_data[:latitude]
+        lon_val = geo_data[:longitude]
 
         # @url = "https://forecast.weather.gov/MapClick.php?lat=#{lat_val}&lon=#{lon_val}&unit=0&lg=english&FcstType=digital" # data table did not really have enough to parse easily, return to this in the future
         @url = "https://forecast.weather.gov/MapClick.php?lat=#{lat_val}&lon=#{lon_val}"
 
         self.get_data_nws
-        # TODO: Fix this
-        display_weather.weather.weather_summary = @weather_summary
+
+        weather_summary = @weather_summary
+        weather_summary
+
     end
 
     def self.get_data_nws
