@@ -19,19 +19,23 @@ Bloomington MN
 https://forecast.weather.gov/MapClick.php?lat=44.8292&lon=-93.3448&unit=0&lg=english&FcstType=digital
 
 ## Working Ideas
-What do I use to run and use the objects below? Is it the file in /bin? Or make a class for DisplayWeather?
+Address (class)
 
-class Weather
+Weather (class)
 
 - holds the Weather object and things the Weather object does
 
-class Geolocation
+Geolocation (class)
 
 - performs the lookup based on selected address
 
-class Scraper
+Scraper (class)
 
 - gets the data from the source (currently only NWS)
 
 ## Future
 Investigate using NWS API https://www.weather.gov/documentation/services-web-api
+
+## Hold
+02-07-2021: Figured out the trouble spot and blasted into the end of Draft 2. Whee!!!!
+02-06-2021: Started to figure out the trouble spot.
