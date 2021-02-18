@@ -1,5 +1,9 @@
 # CLI Weather
 
+## Description
+
+This Ruby CLI application returns the National Weather Service forecast based on an input address value.
+
 ## Project Dependencies
 
 httparty (gem): [https://github.com/jnunemaker/httparty](https://github.com/jnunemaker/httparty)  
