@@ -2,7 +2,7 @@
 
 ## Description
 
-This Ruby CLI application returns the National Weather Service forecast based on an input address value.
+This Ruby CLI application returns the National Weather Service forecast based on an input address value. The user is invited to interact with the application to choose how the weather information is retrieved.
 
 ## Project Dependencies
 
