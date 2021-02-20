@@ -6,13 +6,13 @@ This Ruby CLI application returns the National Weather Service forecast based on
 
 ## Project Dependencies
 
-httparty (gem): [https://github.com/jnunemaker/httparty](https://github.com/jnunemaker/httparty)  
+httparty (gem): [https://github.com/jnunemaker/httparty](https://github.com/jnunemaker/httparty): This gem is used to connect with APIs.  
 
-positionstack (API): [https://positionstack.com/](https://positionstack.com/)
+positionstack (API): [https://positionstack.com/](https://positionstack.com/): This API provides geolocation information based on address input. Requires key (free).  
 
-Rake (gem): [https://github.com/ruby/rake](https://github.com/ruby/rake)
+Rake (gem): [https://github.com/ruby/rake](https://github.com/ruby/rake): This gem allows the application to run for testing.  
 
-rspec (gem): [http://rspec.info/](http://rspec.info/)
+rspec (gem): [http://rspec.info/](http://rspec.info/): This gem is a test runner.  
 
 ## Snippets
 National Weather Service URL parms
