@@ -23,19 +23,21 @@ Bloomington MN
 https://forecast.weather.gov/MapClick.php?lat=44.8292&lon=-93.3448&unit=0&lg=english&FcstType=digital
 
 ## Working Ideas
-Address (class)
 
-Weather (class)
+DisplayWeather (class)  
+Runs the application
 
-- holds the Weather object and things the Weather object does
+Address (class)  
+Gets and confirms (as best as possible) the address
 
-Geolocation (class)
+Weather (class)  
+Holds the Weather object and things the Weather object does
 
-- performs the lookup based on selected address
+Geolocation (class)  
+Performs the lookup based on selected address
 
-Scraper (class)
-
-- gets the data from the source (currently only NWS)
+Scraper (class)  
+Gets the data from the source (currently only NWS)
 
 ## Future
 Investigate using NWS API https://www.weather.gov/documentation/services-web-api
