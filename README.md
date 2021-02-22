@@ -41,7 +41,3 @@ Gets the data from the source (currently only NWS)
 
 ## Future
 Investigate using NWS API https://www.weather.gov/documentation/services-web-api
-
-## Hold
-02-07-2021: Figured out the trouble spot and blasted into the end of Draft 2. Whee!!!!
-02-06-2021: Started to figure out the trouble spot.
