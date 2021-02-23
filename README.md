@@ -40,4 +40,4 @@ Scraper (class)
 Gets the data from the source (currently only NWS)
 
 ## Future
-Investigate using NWS API https://www.weather.gov/documentation/services-web-api
+I will investigate using the NWS API https://www.weather.gov/documentation/services-web-api, as well as tie in other weather services choices.
