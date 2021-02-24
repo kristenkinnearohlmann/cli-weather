@@ -22,7 +22,9 @@ National Weather Service URL parms
 Bloomington MN
 https://forecast.weather.gov/MapClick.php?lat=44.8292&lon=-93.3448&unit=0&lg=english&FcstType=digital
 
-## Working Ideas
+## Process Flow
+
+Working diagram located at: https://lucid.app/lucidchart/a1ba7fa3-fd50-47c9-bd5f-3d866e30d0f3/edit?beaconFlowId=EFFA9CE54CF62CE1&page=0_0#
 
 DisplayWeather (class)  
 Runs the application
