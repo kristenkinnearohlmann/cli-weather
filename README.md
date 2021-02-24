@@ -2,7 +2,9 @@
 
 ## Description
 
-This Ruby CLI application returns the National Weather Service forecast based on an input address value. The user is invited to interact with the application to choose how the weather information is retrieved.
+This Ruby CLI application returns the National Weather Service forecast based on an input address value. The user is invited to interact with the application to choose how the weather information is retrieved.  
+
+This project is protected under the [MIT License](https://github.com/kristenkinnearohlmann/cli-weather/blob/main/LICENSE).
 
 ## Project Information
 
@@ -20,11 +22,7 @@ rspec (gem): [http://rspec.info/](http://rspec.info/): This gem is a test runner
 
 TBA
 
-## License
-
-This project is protected under the [MIT License](https://github.com/kristenkinnearohlmann/cli-weather/blob/main/LICENSE).
-
-## Snippets
+### Snippets
 National Weather Service URL parms
         # @url = "https://forecast.weather.gov/MapClick.php?lat=#{lat_val}&lon=#{lon_val}&unit=0&lg=english&FcstType=digital" # data table did not really have enough to parse easily, return to this in the future
         @url = "https://forecast.weather.gov/MapClick.php?lat=#{lat_val}&lon=#{lon_val}"
@@ -32,7 +30,7 @@ National Weather Service URL parms
 Bloomington MN
 https://forecast.weather.gov/MapClick.php?lat=44.8292&lon=-93.3448&unit=0&lg=english&FcstType=digital
 
-## Process Flow
+### Process Flow
 
 Working diagram located at: https://lucid.app/lucidchart/a1ba7fa3-fd50-47c9-bd5f-3d866e30d0f3/edit?beaconFlowId=EFFA9CE54CF62CE1&page=0_0#
 
@@ -51,10 +49,11 @@ Performs the lookup based on selected address
 Scraper (class)  
 Gets the data from the source (currently only NWS)
 
-## Future
-
-I will investigate using the NWS API https://www.weather.gov/documentation/services-web-api, as well as tie in other weather services choices.
-
 ## Contributor Guide
 
-TBA
+Future enhancements include:  
+- Using the [NWS API](https://www.weather.gov/documentation/services-web-api)
+- Add other weather websites as options
+- Add other weather APIs as options
+
+Please contact me on [GitHub](https://github.com/kristenkinnearohlmann) if you are interested in contributing. I will reach out once I have completed a detailed contributor guide for the project.
