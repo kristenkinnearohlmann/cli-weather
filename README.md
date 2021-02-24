@@ -4,7 +4,9 @@
 
 This Ruby CLI application returns the National Weather Service forecast based on an input address value. The user is invited to interact with the application to choose how the weather information is retrieved.
 
-## Project Dependencies
+## Project Information
+
+### Project Dependencies
 
 httparty (gem): [https://github.com/jnunemaker/httparty](https://github.com/jnunemaker/httparty): This gem is used to connect with APIs.  
 
@@ -13,6 +15,14 @@ positionstack (API): [https://positionstack.com/](https://positionstack.com/): T
 Rake (gem): [https://github.com/ruby/rake](https://github.com/ruby/rake): This gem allows the application to run for testing.  
 
 rspec (gem): [http://rspec.info/](http://rspec.info/): This gem is a test runner.  
+
+### Install Instructions
+
+TBA
+
+## License
+
+This project is protected under the [MIT License](https://github.com/kristenkinnearohlmann/cli-weather/blob/main/LICENSE).
 
 ## Snippets
 National Weather Service URL parms
@@ -42,4 +52,9 @@ Scraper (class)
 Gets the data from the source (currently only NWS)
 
 ## Future
+
 I will investigate using the NWS API https://www.weather.gov/documentation/services-web-api, as well as tie in other weather services choices.
+
+## Contributor Guide
+
+TBA
