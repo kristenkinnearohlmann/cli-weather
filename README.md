@@ -4,6 +4,8 @@
 
 This Ruby CLI application returns the National Weather Service forecast based on an input address value. The user is invited to interact with the application to choose how the weather information is retrieved.  
 
+I used the forecast page for my location in [Bloomington MN](https://forecast.weather.gov/MapClick.php?lat=44.8292&lon=-93.3448&unit=0&lg=english&FcstType=digital). My original goal was to scrape the Tabular Forecast for a locality but the data is not well-labeled for easy scraping. As a runner, I keep my eye on the forecast by hour so I can anticipate how the weather will feel and whether the road surface is dry or slippery. This project idea allowed me to play with that weather data.
+
 This project is protected under the [MIT License](https://github.com/kristenkinnearohlmann/cli-weather/blob/main/LICENSE).
 
 ## Project Information
@@ -39,11 +41,3 @@ Future enhancements include:
 - Add other weather APIs as options
 
 Please contact me on [GitHub](https://github.com/kristenkinnearohlmann) if you are interested in contributing. I will reach out once I have completed a detailed contributor guide for the project.
-
-## Snippets
-National Weather Service URL parms
-        # @url = "https://forecast.weather.gov/MapClick.php?lat=#{lat_val}&lon=#{lon_val}&unit=0&lg=english&FcstType=digital" # data table did not really have enough to parse easily, return to this in the future
-        @url = "https://forecast.weather.gov/MapClick.php?lat=#{lat_val}&lon=#{lon_val}"
-
-Bloomington MN
-https://forecast.weather.gov/MapClick.php?lat=44.8292&lon=-93.3448&unit=0&lg=english&FcstType=digital
