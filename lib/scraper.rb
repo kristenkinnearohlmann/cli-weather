@@ -57,8 +57,6 @@ class Scraper
             @url_data.css("#detailed-forecast-body").css(".row").each do |item|
                 @weather_summary[label.to_sym][item.css(".forecast-label").text.strip.downcase.gsub(" ","_").to_sym] = item.css(".forecast-text").text.strip
             end
-        else
-            puts "No weather returned."
         end
 
     end
