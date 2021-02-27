@@ -31,37 +31,4 @@ class Weather
         @weather_summary[:detailed_forecast].each {|item, val| puts "#{item.to_s.gsub("_"," ").capitalize()}: #{val}"}
     end
 
-    # def weather_main
-    #     binding.pry
-    #     while !quit?
-    #         # quit? false at start of loop
-    #         # get_address can result in quit? true
-    #         # get_address can result in No Choice
-    #         # geolocation can return @geo_location.geo_data.empty? should be quit? true
-    #         # geolocation can return No Choice - how to retry
-            
-    #         # DETAIL more scenarios to determine proper conditional
-
-    #         get_address
-    #         binding.pry
-    #         geo = Geolocation.new()
-    #         binding.pry
-    #     #     if !quit?
-    #     #         if quit?
-    #     #             puts "Have a nice day!"
-    #     #         if (@geo_location.geo_data.empty? && !quit?) then
-    #     #             @geo_location = Geolocation.new(address_type,address)
-    #     #         end
-    #     #         @weather_summary = Scraper.nws(@geo_location)
-    #     #         print_weather if @weather_summary
-    #     #         print "\nGet another forecast? Enter Y or N: "
-    #     #         response = gets.chomp.downcase
-    #     #         @quit = true if response == 'n'
-    #     #     end
-    #     # end
-    #         @quit = true
-    #     end
-    #     puts "Enjoy your weather!"
-    # end
-
 end
