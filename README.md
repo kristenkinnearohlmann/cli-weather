@@ -30,8 +30,8 @@ Performs the lookup based on selected address
 Gets the data from the source (currently only NWS)
 ## Install Instructions
 
-This project can be cloned and run from the command line:  
-`ruby bin/weather`
+This project can be cloned and run from the command line within the `cli-weather` folder:  
+`./bin/weather`
 
 ## Contributor Guide
 
