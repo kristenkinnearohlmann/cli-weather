@@ -2,7 +2,7 @@ class Scraper
 
     attr_reader :url, :url_data, :weather_summary
 
-    def self.nws(weather_summary, geo_data)
+    def nws(weather_summary, geo_data)
 
         @weather_summary = {}
         lat_val = geo_data[:latitude]
@@ -18,7 +18,7 @@ class Scraper
 
     end
 
-    def self.get_data_nws
+    def get_data_nws
 
         @url_data = Nokogiri::HTML(open(@url).read,nil,'utf-8')
         

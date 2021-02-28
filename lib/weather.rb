@@ -8,7 +8,7 @@ class Weather
 
     def get_weather(display_weather)
 
-        @weather_summary = Scraper.nws(self.weather_summary, display_weather.geo_data)
+        @weather_summary = Scraper.new.nws(self.weather_summary, display_weather.geo_data)
     
         if @weather_summary.empty?
             puts "No weather returned."
