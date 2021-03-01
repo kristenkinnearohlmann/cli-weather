@@ -11,16 +11,19 @@ class Scraper
         # @url = "https://forecast.weather.gov/MapClick.php?lat=#{lat_val}&lon=#{lon_val}&unit=0&lg=english&FcstType=digital" # data table did not really have enough to parse easily, return to this in the future
         @url = "https://forecast.weather.gov/MapClick.php?lat=#{lat_val}&lon=#{lon_val}"
 
-        self.get_data_nws
+        scrape_site
+        get_data_nws
 
         @weather_summary
 
     end
 
-    def get_data_nws
-
+    def scrape_site
         @url_data = Nokogiri::HTML(open(@url).read,nil,'utf-8')
-        
+    end
+
+    def get_data_nws
+       
         if !@url_data.css("#current-conditions").empty?
 
             # URL, source of forecast, weather station location
