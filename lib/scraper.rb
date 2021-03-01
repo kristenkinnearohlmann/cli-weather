@@ -13,8 +13,7 @@ class Scraper
 
         self.get_data_nws
 
-        weather_summary = @weather_summary
-        weather_summary
+        @weather_summary
 
     end
 
