@@ -40,7 +40,6 @@ class Address
     end
 
     def valid_address_type?
-        # if (@address_type == 1 || @address_type == 2 || @address_type == 3 || @address_type == 4)
         if @address_type_range.include?(@address_type)
             true
         else
