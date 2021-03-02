@@ -1,6 +1,6 @@
 class Address
 
-    attr_reader :address_type, :address_values, :valid
+    attr_reader :address_type, :address_type_range, :address_values, :valid
     
     def initialize
         @address_type = nil
@@ -27,6 +27,7 @@ class Address
     end
 
     def get_address_type
+        @address_type_range = (1..4)
         loop do
             print "\nChoose location type to enter:\n\t[1] Zip code only\n\t[2] City and State\n\t[3] Full Address\n\t[4] Quit\nEnter your choice: "
             @address_type = gets.chomp.to_i
@@ -39,7 +40,8 @@ class Address
     end
 
     def valid_address_type?
-        if (@address_type == 1 || @address_type == 2 || @address_type == 3 || @address_type == 4)
+        # if (@address_type == 1 || @address_type == 2 || @address_type == 3 || @address_type == 4)
+        if @address_type_range.include?(@address_type)
             true
         else
             puts "#{address_type} is not a valid option. Please make a valid selection."
