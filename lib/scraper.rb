@@ -12,6 +12,7 @@ class Scraper
         @url = "https://forecast.weather.gov/MapClick.php?lat=#{lat_val}&lon=#{lon_val}"
 
         scrape_site
+        binding.pry
         get_data_nws
 
         @weather_summary
