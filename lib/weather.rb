@@ -1,6 +1,6 @@
 class Weather
 
-    attr_reader :weather_summary
+    attr_reader :weather_summary, :current_conditions, :detailed_forecast
 
     def initialize
         @weather_summary = {}
@@ -35,7 +35,6 @@ class Weather
         enter_key = gets.chomp
 
         puts "\nDetailed Forecast:"
-        binding.pry
         @weather_summary[:detailed_forecast].each {|item, val| puts "#{item.to_s.gsub("_"," ").capitalize()}: #{val}"}
     end
 
