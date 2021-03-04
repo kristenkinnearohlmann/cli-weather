@@ -66,6 +66,7 @@ class Address
 
     end
 
+    # TODO: Refactor with a method to make this more DRY
     def get_address
         valid = false
 

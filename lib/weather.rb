@@ -4,6 +4,7 @@ class Weather
 
     def initialize
         @weather_summary = {}
+        #TODO: Separate out attributes, like current conditions and detailed conditions
     end
 
     def get_weather(display_weather)
@@ -34,6 +35,7 @@ class Weather
         enter_key = gets.chomp
 
         puts "\nDetailed Forecast:"
+        binding.pry
         @weather_summary[:detailed_forecast].each {|item, val| puts "#{item.to_s.gsub("_"," ").capitalize()}: #{val}"}
     end
 

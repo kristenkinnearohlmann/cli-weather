@@ -28,6 +28,7 @@ class Geolocation
         response = HTTParty.get(url)
         @geo_data_raw = JSON.parse(response.body)
         @geo_data_raw["data"]
+        # TODO: Make separate data objects for these instead of iterating hash
 
     end
 
