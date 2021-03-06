@@ -1,6 +1,6 @@
 class Geolocation
 
-    attr_reader :lat_lon, :geo_data_raw, :loc_index, :geo_data
+    attr_reader :geo_data_raw, :loc_index, :geo_data
 
     # How can this be hidden from GitHub?
     API_KEY = "c945744d9d15f2e14ff811ff3900a645"
