@@ -19,6 +19,10 @@ class Weather
         
     end
 
+    def set_current_conditions
+        
+    end
+
     def print_weather
         puts "\nWeather from #{@weather_summary[:source]} (#{@weather_summary[:url]})."
         puts "#{@weather_summary[:wx_rpt_location][:loc_title]} (Lat: #{@weather_summary[:wx_rpt_location][:lat]} Lon: #{@weather_summary[:wx_rpt_location][:lon]} Elev: #{@weather_summary[:wx_rpt_location][:elev]})"
