@@ -2,9 +2,9 @@
 
 ## Description
 
-CLI Weather is a Ruby CLI application returns the National Weather Service forecast based on an address value input by the user. The user is invited to interact with the application to choose how the weather information is retrieved - by zip code, by city/state, or by full address.  
+CLI Weather is a Ruby CLI application returns the National Weather Service forecast based on an address value input by the user. The user is invited to interact with the application to choose how the weather information is retrieved - by zip code, by city/state, or by full address. As a runner, I keep my eye on the forecast by hour so I can anticipate how the weather will feel and whether the road surface is dry or slippery. This project idea allowed me to play with weather data.  
 
-I used the forecast page for my location in [Bloomington MN](https://forecast.weather.gov/MapClick.php?lat=44.8292&lon=-93.3448&unit=0&lg=english&FcstType=digital). My original goal was to scrape the Tabular Forecast for a locality but the data is not well-labeled for easy scraping. As a runner, I keep my eye on the forecast by hour so I can anticipate how the weather will feel and whether the road surface is dry or slippery. This project idea allowed me to play with that weather data.
+I used the forecast page by zip code for my location in [Bloomington MN](https://forecast.weather.gov/MapClick.php?lat=44.8292&lon=-93.3448&unit=0&lg=english&FcstType=digital). My original goal was to scrape the Tabular Forecast for a locality but the data is not well-labeled for easy scraping.  
 
 This project is protected under the [MIT License](https://github.com/kristenkinnearohlmann/cli-weather/blob/main/LICENSE).
 
